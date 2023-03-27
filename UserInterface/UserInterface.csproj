@@ -56,11 +56,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Catalog.cs">
+    <Compile Include="FormsGrid\CheckGrid.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Catalog.Designer.cs">
-      <DependentUpon>Catalog.cs</DependentUpon>
+    <Compile Include="FormsGrid\CheckGrid.Designer.cs">
+      <DependentUpon>CheckGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsGrid\CustomerGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGrid\CustomerGrid.Designer.cs">
+      <DependentUpon>CustomerGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsGrid\ProductGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGrid\ProductGrid.Designer.cs">
+      <DependentUpon>ProductGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsGrid\SellerGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGrid\SellerGrid.Designer.cs">
+      <DependentUpon>SellerGrid.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CustomerForm.cs">
       <SubType>Form</SubType>
@@ -88,8 +106,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Catalog.resx">
-      <DependentUpon>Catalog.cs</DependentUpon>
+    <EmbeddedResource Include="FormsGrid\CheckGrid.resx">
+      <DependentUpon>CheckGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGrid\CustomerGrid.resx">
+      <DependentUpon>CustomerGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGrid\ProductGrid.resx">
+      <DependentUpon>ProductGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGrid\SellerGrid.resx">
+      <DependentUpon>SellerGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>

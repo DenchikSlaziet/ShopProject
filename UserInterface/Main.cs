@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.Forms;
+using UserInterface.FormsGrid;
 
 namespace UserInterface
 {
@@ -25,26 +26,26 @@ namespace UserInterface
 
         private void ProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogProduct = new Catalog<Product>(context.Products);
-            catalogProduct.Show();
+            var pg = new ProductGrid();
+            pg.Show();
         }
 
         private void SellerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogSeller = new Catalog<Seller>(context.Sellers);
-            catalogSeller.Show();
+            var sg = new SellerGrid();
+            sg.Show();
         }
 
         private void CustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogCustomer = new Catalog<Customer>(context.Customers);
-            catalogCustomer.Show();
+            var cg = new CustomerGrid();
+            cg.Show();
         }
 
         private void CheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogCheck = new Catalog<Check>(context.Checks);
-            catalogCheck.Show();
+            var catg = new CheckGrid();
+            catg.Show();
         }
 
         private void CustomerAddToolStripMenuItem_Click(object sender, EventArgs e)
