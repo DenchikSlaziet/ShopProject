@@ -20,16 +20,6 @@ namespace UserInterface.Forms
             InitializeComponent();
         }
 
-        private void textBoxNumberCard_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-
-            if (!Char.IsDigit(number) && (Keys)e.KeyChar != Keys.Back)
-            {
-                e.Handled = true;
-            }
-        }
-
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             buttonAdd.Enabled = !string.IsNullOrWhiteSpace(textBoxName.Text) && maskedTextBoxNumberCard.MaskCompleted;

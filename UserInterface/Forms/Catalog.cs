@@ -17,9 +17,8 @@ namespace UserInterface.Forms
         public Catalog(DbSet<T> set)
         {
             InitializeComponent();
-            //Рефачил было dataGridView.DataSource = set.Local.ToBindingList();
             dataGridView.DataSource = set.ToList();
-            //
+            //dataGridView.DataSource = set.Local.ToBindingList();
         }
     }
 }
