@@ -29,21 +29,24 @@ namespace UserInterface.Forms
         {
             using (var context = new MyDbContext())
             {
-                if (context.Sellers.Where(x => x.Name == textBoxName.Text && x.Surname==textBoxSurname.Text &&
-                x.Age==numericUpDownAge.Value && x.CompanySeller==textBoxCompany.Text).Count() > 0)
+                if (context.Sellers.Where(x => x.Name.ToLower() == textBoxName.Text.ToLower() &&
+                x.Surname.ToLower() == textBoxSurname.Text.ToLower() &&
+                x.Age==numericUpDownAge.Value && 
+                x.CompanySeller.ToLower() == textBoxCompany.Text.ToLower()).Count() > 0)
                 {
                     MessageBox.Show("Точно такой-же продавец уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 seller = new Seller()
                 {
-                    Name = textBoxName.Text,
-                    Surname = textBoxSurname.Text,
+                    Name = GetString(textBoxName.Text),
+                    Surname = GetString(textBoxSurname.Text),
                     Age = (int)numericUpDownAge.Value,
                     CompanySeller = textBoxCompany.Text,
                 };
+
                 this.DialogResult = DialogResult.OK;
-                Close();
             }
         }
 
@@ -55,6 +58,17 @@ namespace UserInterface.Forms
             }
         }
 
+        private string GetString(string str) => str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '-')
+            {
+                e.Handled = true;
+            }
+
+        }
     }
 }
 

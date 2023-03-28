@@ -55,7 +55,7 @@ namespace UserInterface
             {
                 context.Customers.Add(form.Customer);
                 context.SaveChanges();
-                MessageBox.Show("Вы успешно добавили покупателя!", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Вы успешно добавили покупателя!\nИмя: {form.Customer.Name}", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -66,7 +66,8 @@ namespace UserInterface
             {
                 context.Sellers.Add(form.seller);
                 context.SaveChanges();
-                MessageBox.Show("Вы успешно добавили продавца!", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Вы успешно добавили продавца!\nИмя: {form.seller.Name}\nФамилия: {form.seller.Surname}",
+                    "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -77,7 +78,8 @@ namespace UserInterface
             {
                 context.Products.Add(form.product);
                 context.SaveChanges();
-                MessageBox.Show("Вы успешно добавили товар!", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Вы успешно добавили товар!\nНаиминование: {form.product.Name}\nЦена: {form.product.Price}",
+                    "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

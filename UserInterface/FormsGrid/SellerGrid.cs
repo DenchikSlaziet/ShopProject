@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.Forms;
 
 namespace UserInterface.FormsGrid
 {
@@ -19,6 +20,24 @@ namespace UserInterface.FormsGrid
         {
             InitializeComponent();
             context = new MyDbContext();
+            dataGridView.AutoGenerateColumns = false;
+            UpdateDG();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            var form = new SellerForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                context.Sellers.Add(form.seller);
+                context.SaveChanges();
+                UpdateDG();
+                MessageBox.Show($"Вы успешно добавили продавца!\nИмя: {form.seller.Name}\nФамилия: {form.seller.Surname}",
+                  "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void UpdateDG()
+        {
             dataGridView.DataSource = context.Sellers.ToList();
         }
     }

@@ -37,11 +37,20 @@ namespace UserInterface.Forms
 
                 Customer = new Customer()
                 {
-                    Name = textBoxName.Text,
+                    Name = GetString(textBoxName.Text),
                     NumberCard = maskedTextBoxNumberCard.Text,
                 };
                 this.DialogResult = DialogResult.OK;
-                Close();
+            }
+        }
+        private string GetString(string str) => str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != '\b' && l!='-')
+            {
+                e.Handled = true;
             }
         }
     }

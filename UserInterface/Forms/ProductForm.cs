@@ -51,7 +51,7 @@ namespace UserInterface.Forms
         {
             using (var context = new MyDbContext())
             {
-                if (context.Products.Where(x => x.Name == textBoxName.Text).Count() > 0)
+                if (context.Products.Where(x => x.Name.ToLower() == textBoxName.Text.ToLower()).Count() > 0)
                 {
                     MessageBox.Show("Такой товар уже существует, вы можете изменить уже существующий!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -59,13 +59,23 @@ namespace UserInterface.Forms
 
                 product = new Product()
                 {
-                    Name = textBoxName.Text,
+                    Name = GetString(textBoxName.Text),
                     Count = (int)numericUpDownCount.Value,
                     Price=numericUpDownSell.Value               
                 };
                 this.DialogResult = DialogResult.OK;
-                Close();
             }
+        }
+        private string GetString(string str) => str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '-' && l!=' ')
+            {
+                e.Handled = true;
+            }
+
         }
     }
 }
