@@ -25,15 +25,17 @@ namespace UserInterface.Forms
             textBoxSurname.Text = sl.Surname;
             textBoxCompany.Text = sl.CompanySeller;
             numericUpDownAge.Text=sl.Age.ToString();
+            maskedTextBox1.Text = sl.UniqueNumber;
             buttonAdd.Text = "Изменить";
             this.Text = "Изменить Продаца";
+            label6.Visible= false;
             seller = sl;
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             buttonAdd.Enabled = !string.IsNullOrWhiteSpace(textBoxName.Text) && !string.IsNullOrWhiteSpace(numericUpDownAge.Text) &&
-                !string.IsNullOrWhiteSpace(textBoxSurname.Text) && !string.IsNullOrWhiteSpace(textBoxCompany.Text);
+                !string.IsNullOrWhiteSpace(textBoxSurname.Text) && !string.IsNullOrWhiteSpace(textBoxCompany.Text) && maskedTextBox1.MaskCompleted;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -42,10 +44,7 @@ namespace UserInterface.Forms
             {
                 if (seller == null)
                 {
-                    if (context.Sellers.Where(x => x.Name.ToLower() == textBoxName.Text.ToLower() &&
-                    x.Surname.ToLower() == textBoxSurname.Text.ToLower() &&
-                    x.Age == numericUpDownAge.Value &&
-                    x.CompanySeller.ToLower() == textBoxCompany.Text.ToLower()).Count() > 0)
+                    if (context.Sellers.Where(x=>x.UniqueNumber==maskedTextBox1.Text).Count() > 0)
                     {
                         MessageBox.Show("Точно такой-же продавец уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -58,6 +57,7 @@ namespace UserInterface.Forms
                     Surname = GetString(textBoxSurname.Text),
                     Age = (int)numericUpDownAge.Value,
                     CompanySeller = textBoxCompany.Text,
+                    UniqueNumber= maskedTextBox1.Text,
                 };
                 this.DialogResult = DialogResult.OK;
             }

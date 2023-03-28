@@ -39,6 +39,8 @@ namespace UserInterface.FormsGrid
         private void UpdateDG()
         {
             dataGridView.DataSource = context.Sellers.ToList();
+            toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
+            toolStripStatusLabelCountAge.Text = $"Моложе 25 лет: {context.Sellers.Where(x => x.Age < 25).Count()}";
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -66,8 +68,18 @@ namespace UserInterface.FormsGrid
             var infoform = new SellerForm(data);
             if (infoform.ShowDialog(this) == DialogResult.OK)
             {
+                data.Name= infoform.seller.Name;
+                data.Surname = infoform.seller.Surname;
+                data.Age= infoform.seller.Age;  
+                data.CompanySeller=infoform.seller.CompanySeller;
+                context.SaveChanges();
                 UpdateDG();
             }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateDG();
         }
     }
 }

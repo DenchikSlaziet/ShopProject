@@ -24,10 +24,11 @@ namespace UserInterface.Forms
         {
             textBoxName.Text = pr.Name;
             numericUpDownCount.Text = pr.Count.ToString();
-            numericUpDownSell.Text=pr.Price.ToString();
+            numericUpDownSell.Text = pr.Price.ToString();
             this.Text = "Изменение товара";
-            textBoxName.Enabled = false;
             buttonAdd.Text = "Изменить";
+            textBoxName.Enabled = false;
+            label4.Visible= false;
             product= pr;
         }
 

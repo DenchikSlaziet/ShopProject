@@ -54,6 +54,7 @@ namespace UserInterface.Forms
                     Name = GetString(textBoxName.Text),
                     NumberCard = maskedTextBoxNumberCard.Text,
                 };
+
                 this.DialogResult = DialogResult.OK;
             }
         }

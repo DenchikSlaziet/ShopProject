@@ -36,6 +36,11 @@ namespace CRMBL.Model
         /// </summary>
         public string CompanySeller { get; set; }
 
+        /// <summary>
+        /// Уникальный номер
+        /// </summary>
+        public string UniqueNumber { get; set; }
+
         public virtual ICollection<Check> Checks { get; set; }
 
         public override string ToString()

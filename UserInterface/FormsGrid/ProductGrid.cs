@@ -39,6 +39,9 @@ namespace UserInterface.FormsGrid
         private void UpdateDG()
         {
             dataGridView.DataSource = context.Products.ToList();
+            toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
+            toolStripStatusLabelCountCount.Text = $"Кол-во меньше 50: {context.Products.Where(x => x.Count < 50).Count()}";
+            toolStripStatusLabelCountSell.Text = $"Дешевле 100 рублей: {context.Products.Where(x => x.Price < 100).Count()}";
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -69,8 +72,14 @@ namespace UserInterface.FormsGrid
                 data.Name = infoform.product.Name;
                 data.Price=infoform.product.Price;
                 data.Count=infoform.product.Count;
+                context.SaveChanges();
                 UpdateDG();
             }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateDG();
         }
     }
 }

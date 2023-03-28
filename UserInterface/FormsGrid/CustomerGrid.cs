@@ -43,6 +43,7 @@ namespace UserInterface.FormsGrid
         private void UpdateDG()
         {
             dataGridView.DataSource = context.Customers.ToList();
+            toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -72,9 +73,46 @@ namespace UserInterface.FormsGrid
             {
                 data.Name = infoform.Customer.Name;
                 data.NumberCard = infoform.Customer.NumberCard;
+                context.SaveChanges();
                 UpdateDG();
             }
 
+        }
+
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dataGridView.SelectedRows.Count > 0)
+            {
+                textBoxName.Text = dataGridView.SelectedRows[0].Cells["ColumnName"].Value.ToString();
+                textBoxNumber.Text= dataGridView.SelectedRows[0].Cells["NumberCardColumn"].Value.ToString();
+            }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            //DataGridViewColumn COL;
+            //switch (comboBox1.SelectedItem.ToString())
+            //{
+            //    case "Имя":
+            //        COL = dataGridView.Columns["ColumnName"];
+            //        break;
+            //    case "Номер Карты":
+            //        COL = dataGridView.Columns["NumberCardColumn"];
+            //        break;
+            //    default:
+            //        {
+            //            MessageBox.Show("Не выбран столбец!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            return;
+            //        }
+            //}
+            //if(radioButtonUp.Checked)
+            //{
+            //    dataGridView.Sort(COL,ListSortDirection.Ascending);
+            //}
+            //else
+            //{
+            //    dataGridView.Sort(COL,ListSortDirection.Descending);
+            //}
         }
     }
 }

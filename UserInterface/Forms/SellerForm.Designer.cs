@@ -38,6 +38,9 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.numericUpDownAge = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAge)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,7 +120,7 @@
             // 
             this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonClose.Location = new System.Drawing.Point(441, 291);
+            this.buttonClose.Location = new System.Drawing.Point(443, 379);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(141, 41);
             this.buttonClose.TabIndex = 17;
@@ -128,7 +131,7 @@
             // 
             this.buttonAdd.Enabled = false;
             this.buttonAdd.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAdd.Location = new System.Drawing.Point(54, 291);
+            this.buttonAdd.Location = new System.Drawing.Point(65, 379);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(141, 41);
             this.buttonAdd.TabIndex = 16;
@@ -160,11 +163,44 @@
             0});
             this.numericUpDownAge.Leave += new System.EventHandler(this.numericUpDownAge_Leave);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(19, 274);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(230, 48);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Введите уникальный \r\nномер сотрудника:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedTextBox1.Location = new System.Drawing.Point(255, 289);
+            this.maskedTextBox1.Mask = "0LL0-L00L-L0L0";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(363, 33);
+            this.maskedTextBox1.TabIndex = 20;
+            this.maskedTextBox1.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(290, 325);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(279, 17);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Внимание, номер не подлежит изменениям!";
+            // 
             // SellerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 350);
+            this.ClientSize = new System.Drawing.Size(645, 432);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDownAge);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonAdd);
@@ -176,8 +212,8 @@
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(661, 389);
-            this.MinimumSize = new System.Drawing.Size(661, 389);
+            this.MaximumSize = new System.Drawing.Size(661, 471);
+            this.MinimumSize = new System.Drawing.Size(661, 471);
             this.Name = "SellerForm";
             this.Text = "Добавить Продавца";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAge)).EndInit();
@@ -197,5 +233,8 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.NumericUpDown numericUpDownAge;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
