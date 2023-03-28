@@ -40,5 +40,37 @@ namespace UserInterface.FormsGrid
         {
             dataGridView.DataSource = context.Products.ToList();
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            var data = (Product)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
+            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name}, стоимостью {data.Price}?", "Удаление Записи",
+                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                using (var connect = new MyDbContext())
+                {
+                    var product = connect.Products.FirstOrDefault(x => x.ProductId == data.ProductId);
+                    if (product != null)
+                    {
+                        connect.Products.Remove(product);
+                        connect.SaveChanges();
+                        UpdateDG();
+                    }
+                }
+            }
+        }
+
+        private void buttonRefactor_Click(object sender, EventArgs e)
+        {
+            var data = (Product)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
+            var infoform = new ProductForm(data);
+            if (infoform.ShowDialog(this) == DialogResult.OK)
+            {
+                data.Name = infoform.product.Name;
+                data.Price=infoform.product.Price;
+                data.Count=infoform.product.Count;
+                UpdateDG();
+            }
+        }
     }
 }

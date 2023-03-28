@@ -44,5 +44,37 @@ namespace UserInterface.FormsGrid
         {
             dataGridView.DataSource = context.Customers.ToList();
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            var data = (Customer)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
+            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} ?", "Удаление Записи",
+                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                using(var connect = new MyDbContext())
+                {
+                    var customer = connect.Customers.FirstOrDefault(x => x.CustomerId == data.CustomerId);
+                    if (customer != null)
+                    {
+                        connect.Customers.Remove(customer);
+                        connect.SaveChanges();
+                        UpdateDG();
+                    }
+                }
+            }
+        }
+
+        private void buttonRefactor_Click(object sender, EventArgs e)
+        {
+            var data = (Customer)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
+            var infoform = new CustomerForm(data);
+            if (infoform.ShowDialog(this) == DialogResult.OK)
+            {
+                data.Name = infoform.Customer.Name;
+                data.NumberCard = infoform.Customer.NumberCard;
+                UpdateDG();
+            }
+
+        }
     }
 }

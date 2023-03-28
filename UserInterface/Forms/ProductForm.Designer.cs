@@ -36,6 +36,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.numericUpDownCount = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSell)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCount)).BeginInit();
             this.SuspendLayout();
@@ -171,11 +172,22 @@
             0});
             this.numericUpDownCount.Leave += new System.EventHandler(this.numericUpDownSell_Leave);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(268, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(293, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Внимание, название не подлежит изменениям!";
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 332);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.numericUpDownCount);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonAdd);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.NumericUpDown numericUpDownCount;
+        private System.Windows.Forms.Label label4;
     }
 }

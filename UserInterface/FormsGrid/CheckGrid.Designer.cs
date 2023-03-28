@@ -85,7 +85,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView);
             this.Name = "CheckGrid";
-            this.Text = "CheckGrid";
+            this.Text = "Чеки";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

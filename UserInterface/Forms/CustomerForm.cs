@@ -20,6 +20,17 @@ namespace UserInterface.Forms
             InitializeComponent();
         }
 
+        public CustomerForm(Customer customer) : this()
+        {
+            textBoxName.Text = customer.Name;
+            maskedTextBoxNumberCard.Text = customer.NumberCard;
+            buttonAdd.Text = "Изменить";
+            this.Text = "Изменить покупателя";
+            maskedTextBoxNumberCard.Enabled = false;
+            label3.Visible = false;
+            Customer=customer;
+        }
+
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             buttonAdd.Enabled = !string.IsNullOrWhiteSpace(textBoxName.Text) && maskedTextBoxNumberCard.MaskCompleted;
@@ -29,10 +40,13 @@ namespace UserInterface.Forms
         {
             using (var context = new MyDbContext())
             {
-                if (context.Customers.Where(x=>x.NumberCard==maskedTextBoxNumberCard.Text).Count()>0)
+                if (Customer == null)
                 {
-                    MessageBox.Show("Данная карта уже существует!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    return;
+                    if (context.Customers.Where(x => x.NumberCard == maskedTextBoxNumberCard.Text).Count() > 0)
+                    {
+                        MessageBox.Show("Данная карта уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
 
                 Customer = new Customer()
@@ -43,7 +57,20 @@ namespace UserInterface.Forms
                 this.DialogResult = DialogResult.OK;
             }
         }
-        private string GetString(string str) => str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+        private string GetString(string str)
+        {
+            var full = str.Split('-');
+            if (full.Length > 0)
+            {
+                var name = "";
+                foreach (var item in full)
+                {
+                    name += item.Substring(0, 1).ToUpper() + item.Substring(1).ToLower() + "-";
+                }
+                return name.Remove(name.Length-1,1);
+            }
+            return str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+        }
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {

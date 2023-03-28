@@ -20,6 +20,17 @@ namespace UserInterface.Forms
             InitializeComponent();
         }
 
+        public ProductForm(Product pr) : this()
+        {
+            textBoxName.Text = pr.Name;
+            numericUpDownCount.Text = pr.Count.ToString();
+            numericUpDownSell.Text=pr.Price.ToString();
+            this.Text = "Изменение товара";
+            textBoxName.Enabled = false;
+            buttonAdd.Text = "Изменить";
+            product= pr;
+        }
+
         private void textBoxCount_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -51,10 +62,13 @@ namespace UserInterface.Forms
         {
             using (var context = new MyDbContext())
             {
-                if (context.Products.Where(x => x.Name.ToLower() == textBoxName.Text.ToLower()).Count() > 0)
+                if (product == null)
                 {
-                    MessageBox.Show("Такой товар уже существует, вы можете изменить уже существующий!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (context.Products.Where(x => x.Name.ToLower() == textBoxName.Text.ToLower()).Count() > 0)
+                    {
+                        MessageBox.Show("Такой товар уже существует, вы можете изменить уже существующий!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
 
                 product = new Product()
@@ -66,7 +80,20 @@ namespace UserInterface.Forms
                 this.DialogResult = DialogResult.OK;
             }
         }
-        private string GetString(string str) => str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+        private string GetString(string str)
+        {
+            var full = str.Split('-');
+            if (full.Length > 0)
+            {
+                var name = "";
+                foreach (var item in full)
+                {
+                    name += item.Substring(0, 1).ToUpper() + item.Substring(1).ToLower() + "-";
+                }
+                return name.Remove(name.Length - 1, 1);
+            }
+            return str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+        }
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {

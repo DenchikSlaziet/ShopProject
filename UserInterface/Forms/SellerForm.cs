@@ -19,6 +19,17 @@ namespace UserInterface.Forms
             InitializeComponent();
         }
 
+        public SellerForm(Seller sl):this()
+        {
+            textBoxName.Text = sl.Name;
+            textBoxSurname.Text = sl.Surname;
+            textBoxCompany.Text = sl.CompanySeller;
+            numericUpDownAge.Text=sl.Age.ToString();
+            buttonAdd.Text = "Изменить";
+            this.Text = "Изменить Продаца";
+            seller = sl;
+        }
+
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             buttonAdd.Enabled = !string.IsNullOrWhiteSpace(textBoxName.Text) && !string.IsNullOrWhiteSpace(numericUpDownAge.Text) &&
@@ -29,13 +40,16 @@ namespace UserInterface.Forms
         {
             using (var context = new MyDbContext())
             {
-                if (context.Sellers.Where(x => x.Name.ToLower() == textBoxName.Text.ToLower() &&
-                x.Surname.ToLower() == textBoxSurname.Text.ToLower() &&
-                x.Age==numericUpDownAge.Value && 
-                x.CompanySeller.ToLower() == textBoxCompany.Text.ToLower()).Count() > 0)
+                if (seller == null)
                 {
-                    MessageBox.Show("Точно такой-же продавец уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (context.Sellers.Where(x => x.Name.ToLower() == textBoxName.Text.ToLower() &&
+                    x.Surname.ToLower() == textBoxSurname.Text.ToLower() &&
+                    x.Age == numericUpDownAge.Value &&
+                    x.CompanySeller.ToLower() == textBoxCompany.Text.ToLower()).Count() > 0)
+                    {
+                        MessageBox.Show("Точно такой-же продавец уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
 
                 seller = new Seller()
@@ -45,7 +59,6 @@ namespace UserInterface.Forms
                     Age = (int)numericUpDownAge.Value,
                     CompanySeller = textBoxCompany.Text,
                 };
-
                 this.DialogResult = DialogResult.OK;
             }
         }
@@ -58,7 +71,20 @@ namespace UserInterface.Forms
             }
         }
 
-        private string GetString(string str) => str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+        private string GetString(string str)
+        {
+            var full = str.Split('-');
+            if (full.Length > 0)
+            {
+                var name = "";
+                foreach (var item in full)
+                {
+                    name += item.Substring(0, 1).ToUpper() + item.Substring(1).ToLower() + "-";
+                }
+                return name.Remove(name.Length - 1, 1);
+            }
+            return str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
+        }
 
         private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
