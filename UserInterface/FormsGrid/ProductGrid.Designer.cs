@@ -34,15 +34,15 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCountAll = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelCountSell = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelCountCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +50,7 @@
             // buttonRefactor
             // 
             this.buttonRefactor.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRefactor.Location = new System.Drawing.Point(414, 374);
+            this.buttonRefactor.Location = new System.Drawing.Point(468, 374);
             this.buttonRefactor.Name = "buttonRefactor";
             this.buttonRefactor.Size = new System.Drawing.Size(131, 35);
             this.buttonRefactor.TabIndex = 7;
@@ -61,7 +61,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDelete.Location = new System.Drawing.Point(605, 374);
+            this.buttonDelete.Location = new System.Drawing.Point(684, 374);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(131, 35);
             this.buttonDelete.TabIndex = 6;
@@ -102,45 +102,13 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(724, 334);
+            this.dataGridView.Size = new System.Drawing.Size(803, 334);
             this.dataGridView.TabIndex = 4;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.DataPropertyName = "Name";
-            this.NameColumn.HeaderText = "Наиминование";
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            this.NameColumn.Width = 230;
-            // 
-            // PriceColumn
-            // 
-            this.PriceColumn.DataPropertyName = "Price";
-            this.PriceColumn.HeaderText = "Стоимость";
-            this.PriceColumn.Name = "PriceColumn";
-            this.PriceColumn.ReadOnly = true;
-            this.PriceColumn.Width = 170;
-            // 
-            // CountColumn
-            // 
-            this.CountColumn.DataPropertyName = "Count";
-            this.CountColumn.HeaderText = "Кол-во";
-            this.CountColumn.Name = "CountColumn";
-            this.CountColumn.ReadOnly = true;
-            this.CountColumn.Width = 130;
-            // 
-            // SellsColumn
-            // 
-            this.SellsColumn.DataPropertyName = "Sells";
-            this.SellsColumn.HeaderText = "Продажи";
-            this.SellsColumn.Name = "SellsColumn";
-            this.SellsColumn.ReadOnly = true;
-            this.SellsColumn.Width = 150;
             // 
             // buttonUpdate
             // 
             this.buttonUpdate.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonUpdate.Location = new System.Drawing.Point(205, 374);
+            this.buttonUpdate.Location = new System.Drawing.Point(220, 374);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(131, 35);
             this.buttonUpdate.TabIndex = 13;
@@ -156,7 +124,7 @@
             this.toolStripStatusLabelCountCount});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(750, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(835, 22);
             this.statusStrip1.TabIndex = 14;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -180,11 +148,43 @@
             this.toolStripStatusLabelCountCount.Size = new System.Drawing.Size(112, 17);
             this.toolStripStatusLabelCountCount.Text = "Кол-во меньше 50:";
             // 
+            // NameColumn
+            // 
+            this.NameColumn.DataPropertyName = "Name";
+            this.NameColumn.HeaderText = "Наиминование";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            this.NameColumn.Width = 230;
+            // 
+            // PriceColumn
+            // 
+            this.PriceColumn.DataPropertyName = "Price";
+            this.PriceColumn.HeaderText = "Стоимость(руб.)";
+            this.PriceColumn.Name = "PriceColumn";
+            this.PriceColumn.ReadOnly = true;
+            this.PriceColumn.Width = 230;
+            // 
+            // CountColumn
+            // 
+            this.CountColumn.DataPropertyName = "Count";
+            this.CountColumn.HeaderText = "Кол-во(шт.)";
+            this.CountColumn.Name = "CountColumn";
+            this.CountColumn.ReadOnly = true;
+            this.CountColumn.Width = 150;
+            // 
+            // SellsColumn
+            // 
+            this.SellsColumn.DataPropertyName = "Sells";
+            this.SellsColumn.HeaderText = "Продажи";
+            this.SellsColumn.Name = "SellsColumn";
+            this.SellsColumn.ReadOnly = true;
+            this.SellsColumn.Width = 150;
+            // 
             // ProductGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 450);
+            this.ClientSize = new System.Drawing.Size(835, 450);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonRefactor);
@@ -207,14 +207,14 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CountColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SellsColumn;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCountAll;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCountSell;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCountCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SellsColumn;
     }
 }

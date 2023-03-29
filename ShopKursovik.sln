@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMBL", "CRMBL\CRMBL.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UserInterface\UserInterface.csproj", "{3B536FC5-5C62-4F9C-AFA6-0E5451C34B69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A09CFB42-9107-427C-A45F-4C6528E7A9E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3B536FC5-5C62-4F9C-AFA6-0E5451C34B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B536FC5-5C62-4F9C-AFA6-0E5451C34B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B536FC5-5C62-4F9C-AFA6-0E5451C34B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09CFB42-9107-427C-A45F-4C6528E7A9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09CFB42-9107-427C-A45F-4C6528E7A9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09CFB42-9107-427C-A45F-4C6528E7A9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09CFB42-9107-427C-A45F-4C6528E7A9E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

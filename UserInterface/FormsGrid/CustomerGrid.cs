@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,12 @@ namespace UserInterface.FormsGrid
             InitializeComponent();
             context = new MyDbContext();
             dataGridView.AutoGenerateColumns = false;
+            comboBox1.SelectedIndex = 1;
             UpdateDG();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            UpdateDG();
-        }
+        private void button1_Click(object sender, EventArgs e) => UpdateDG();
+
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -42,7 +42,7 @@ namespace UserInterface.FormsGrid
 
         private void UpdateDG()
         {
-            dataGridView.DataSource = context.Customers.ToList();
+            dataGridView.Update();
             toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
         }
 
@@ -84,35 +84,62 @@ namespace UserInterface.FormsGrid
             if(dataGridView.SelectedRows.Count > 0)
             {
                 textBoxName.Text = dataGridView.SelectedRows[0].Cells["ColumnName"].Value.ToString();
-                textBoxNumber.Text= dataGridView.SelectedRows[0].Cells["NumberCardColumn"].Value.ToString();
+                textBoxNumber.Text = dataGridView.SelectedRows[0].Cells["NumberCardColumn"].Value.ToString();
             }
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            //DataGridViewColumn COL;
-            //switch (comboBox1.SelectedItem.ToString())
-            //{
-            //    case "Имя":
-            //        COL = dataGridView.Columns["ColumnName"];
-            //        break;
-            //    case "Номер Карты":
-            //        COL = dataGridView.Columns["NumberCardColumn"];
-            //        break;
-            //    default:
-            //        {
-            //            MessageBox.Show("Не выбран столбец!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            return;
-            //        }
-            //}
-            //if(radioButtonUp.Checked)
-            //{
-            //    dataGridView.Sort(COL,ListSortDirection.Ascending);
-            //}
-            //else
-            //{
-            //    dataGridView.Sort(COL,ListSortDirection.Descending);
-            //}
+            switch (comboBox1.SelectedItem.ToString())
+            {
+                case "Имя": 
+                    if(radioButtonUp.Checked)
+                        dataGridView.DataSource = context.Customers.OrderBy(x=>x.Name).ToList();
+                    else
+                        dataGridView.DataSource = context.Customers.OrderByDescending(x => x.Name).ToList();
+                    break;
+
+                case "Номер Карты":
+                    if (radioButtonDown.Checked)
+                        dataGridView.DataSource = context.Customers.OrderByDescending(x => x.NumberCard).ToList();
+                    else
+                        dataGridView.DataSource = context.Customers.OrderBy(x => x.NumberCard).ToList();
+                    break;
+
+                default:
+                    {
+                        MessageBox.Show("Не выбран столбец!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+            }            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //button1.Enabled = !string.IsNullOrWhiteSpace(textBox1.Text);
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridView.ColumnCount; j++)
+                {
+                    dataGridView[j, i].Style.BackColor = Color.White;
+                    dataGridView[j, i].Style.ForeColor = Color.Black;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                for (int i = 0; i < dataGridView.RowCount; i++)
+                {
+                    for (int j = 0; j < dataGridView.ColumnCount-1; j++)
+                    {
+                        if (dataGridView[j, i].Value.ToString().ToLower().Contains(textBox1.Text.ToLower()))
+                        {
+                            dataGridView[j, i].Style.BackColor = Color.Black;
+                            dataGridView[j, i].Style.ForeColor = Color.White;
+                        }
+                    }
+                }
+            }
         }
     }
 }
