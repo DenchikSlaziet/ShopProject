@@ -39,7 +39,7 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 12);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(913, 334);
+            this.dataGridView.Size = new System.Drawing.Size(913, 306);
             this.dataGridView.TabIndex = 4;
             // 
             // CheckGrid
@@ -50,6 +50,7 @@
             this.Controls.Add(this.dataGridView);
             this.Name = "CheckGrid";
             this.Text = "Чеки";
+            this.Load += new System.EventHandler(this.CheckGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

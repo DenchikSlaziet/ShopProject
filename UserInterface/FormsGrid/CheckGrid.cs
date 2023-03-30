@@ -16,5 +16,10 @@ namespace UserInterface.FormsGrid
         {
             InitializeComponent();
         }
+
+        private void CheckGrid_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
