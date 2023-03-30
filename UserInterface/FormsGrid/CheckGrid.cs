@@ -16,10 +16,5 @@ namespace UserInterface.FormsGrid
         {
             InitializeComponent();
         }
-
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
