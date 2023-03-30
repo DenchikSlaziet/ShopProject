@@ -38,7 +38,7 @@ namespace UserInterface.FormsGrid
         }
         private void UpdateDG()
         {
-            dataGridView.Update();
+            dataGridView.DataSource = context.Products.ToList();
             toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
             toolStripStatusLabelCountCount.Text = $"Кол-во меньше 50: {context.Products.Where(x => x.Count < 50).Count()}";
             toolStripStatusLabelCountSell.Text = $"Дешевле 100 рублей: {context.Products.Where(x => x.Price < 100).Count()}";

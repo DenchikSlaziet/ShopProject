@@ -42,7 +42,7 @@ namespace UserInterface.FormsGrid
 
         private void UpdateDG()
         {
-            dataGridView.Update();
+            dataGridView.DataSource = context.Customers.ToList();
             toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
         }
 
@@ -81,7 +81,7 @@ namespace UserInterface.FormsGrid
 
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if(dataGridView.SelectedRows.Count > 0)
+            if (dataGridView.SelectedRows.Count > 0)
             {
                 textBoxName.Text = dataGridView.SelectedRows[0].Cells["ColumnName"].Value.ToString();
                 textBoxNumber.Text = dataGridView.SelectedRows[0].Cells["NumberCardColumn"].Value.ToString();
