@@ -21,6 +21,7 @@ namespace UserInterface.FormsGrid
             InitializeComponent();
             context = new MyDbContext();
             dataGridView.AutoGenerateColumns = false;
+            comboBox1.SelectedIndex = 0;
             UpdateDG();
         }
 
@@ -81,6 +82,89 @@ namespace UserInterface.FormsGrid
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             UpdateDG();
+        }
+
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count > 0)
+            {
+                textBoxName.Text = dataGridView.SelectedRows[0].Cells["NameColumn"].Value.ToString();
+                textBoxSurname.Text = dataGridView.SelectedRows[0].Cells["SurnameColumn"].Value.ToString();
+                textBoxNumber.Text = dataGridView.SelectedRows[0].Cells["UniqColumn"].Value.ToString();
+                textBoxAge.Text = dataGridView.SelectedRows[0].Cells["AgeColumn"].Value.ToString();
+                textBoxCompany.Text = dataGridView.SelectedRows[0].Cells["CompanyColumn"].Value.ToString();
+            }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {          
+                switch (comboBox1.SelectedItem.ToString())
+                {
+                    case "Имя":
+                        if (radioButtonUp.Checked)
+                            dataGridView.DataSource = context.Sellers.OrderBy(x => x.Name).ToList();
+                        else
+                            dataGridView.DataSource = context.Sellers.OrderByDescending(x => x.Name).ToList();
+                        break;
+
+                    case "Фамилия":
+                        if (radioButtonDown.Checked)
+                            dataGridView.DataSource = context.Sellers.OrderByDescending(x => x.Surname).ToList();
+                        else
+                            dataGridView.DataSource = context.Sellers.OrderBy(x => x.Surname).ToList();
+                        break;
+                    case "Возраст":
+                        if (radioButtonDown.Checked)
+                            dataGridView.DataSource = context.Sellers.OrderByDescending(x => x.Age).ToList();
+                        else
+                            dataGridView.DataSource = context.Sellers.OrderBy(x => x.Age).ToList();
+                        break;
+                    case "Название Компании":
+                        if (radioButtonDown.Checked)
+                            dataGridView.DataSource = context.Sellers.OrderByDescending(x => x.CompanySeller).ToList();
+                        else
+                            dataGridView.DataSource = context.Sellers.OrderBy(x => x.CompanySeller).ToList();
+                        break;
+                    case "Уникальный номер":
+                        if (radioButtonDown.Checked)
+                            dataGridView.DataSource = context.Sellers.OrderByDescending(x => x.UniqueNumber).ToList();
+                        else
+                            dataGridView.DataSource = context.Sellers.OrderBy(x => x.UniqueNumber).ToList();
+                        break;
+                    default:
+                        {
+                            MessageBox.Show("Не выбран столбец!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                }        
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridView.ColumnCount; j++)
+                {
+                    dataGridView[j, i].Style.BackColor = Color.White;
+                    dataGridView[j, i].Style.ForeColor = Color.Black;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(textBoxSearch.Text))
+            {
+                dataGridView.ClearSelection();
+                for (int i = 0; i < dataGridView.RowCount; i++)
+                {
+                    for (int j = 0; j < dataGridView.ColumnCount - 1; j++)
+                    {
+                        if (dataGridView[j, i].Value.ToString().ToLower().Contains(textBoxSearch.Text.ToLower()))
+                        {
+                            dataGridView[j, i].Style.BackColor = Color.Black;
+                            dataGridView[j, i].Style.ForeColor = Color.White;
+                        }
+                    }
+                }
+            }
         }
     }
 }

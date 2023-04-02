@@ -21,7 +21,7 @@ namespace UserInterface.FormsGrid
             InitializeComponent();
             context = new MyDbContext();
             dataGridView.AutoGenerateColumns = false;
-            comboBox1.SelectedIndex = 1;
+            comboBox1.SelectedIndex = 0;
             UpdateDG();
         }
 
@@ -92,9 +92,9 @@ namespace UserInterface.FormsGrid
         {
             switch (comboBox1.SelectedItem.ToString())
             {
-                case "Имя": 
-                    if(radioButtonUp.Checked)
-                        dataGridView.DataSource = context.Customers.OrderBy(x=>x.Name).ToList();
+                case "Имя":
+                    if (radioButtonUp.Checked)
+                        dataGridView.DataSource = context.Customers.OrderBy(x => x.Name).ToList();
                     else
                         dataGridView.DataSource = context.Customers.OrderByDescending(x => x.Name).ToList();
                     break;
@@ -111,7 +111,7 @@ namespace UserInterface.FormsGrid
                         MessageBox.Show("Не выбран столбец!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-            }            
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -128,6 +128,7 @@ namespace UserInterface.FormsGrid
 
             if (!string.IsNullOrWhiteSpace(textBox1.Text))
             {
+                dataGridView.ClearSelection();
                 for (int i = 0; i < dataGridView.RowCount; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount-1; j++)
