@@ -9,7 +9,7 @@ namespace CRMBL.Model
 {
     public class MyDbContext:DbContext
     {
-        public MyDbContext():base("DbConectionStringCol")
+        public MyDbContext():base("DbConectionStringHome")
         {
 
         }

@@ -1,19 +1,8 @@
 ﻿using CRMBL.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.Forms;
 using UserInterface.FormsGrid;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace UserInterface
 {
@@ -119,6 +108,35 @@ namespace UserInterface
         private void моделированиеToolStripMenuItem_MouseEnter(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Просмотр работоспособности магазина";
+        }
+
+        private void справкаToolStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Просмотр информации о приложении";
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new InformationForm();
+            form.ShowDialog();
+        }
+
+        private void просмотрСправкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "Справка.docx");
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           if(MessageBox.Show("Вы точно хотите выйти?","Вопрос",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void выходToolStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Выйти из приложения";
         }
     }
 }
