@@ -1,4 +1,5 @@
 ﻿using CRMBL.Model;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace UserInterface.FormsGrid
 {
@@ -165,6 +167,61 @@ namespace UserInterface.FormsGrid
                     }
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            switch (MessageBox.Show("Экспортировать все?", "Справка", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+            {
+                case DialogResult.Yes:
+                    {
+                        var xlApp = GetExcel();
+                        for (int i = 0; i < dataGridView.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dataGridView.Columns.Count - 1; j++)
+                            {
+                                xlApp.Cells[i + 2, j + 1] = dataGridView.Rows[i].Cells[j].Value.ToString();
+                            }
+                        }
+                        xlApp.Visible = true;
+                        break;
+                    };
+
+                case DialogResult.No:
+                    {
+                        var xlApp = GetExcel();
+                        for (int i = 0; i < dataGridView.SelectedRows.Count; i++)
+                        {
+                            for (int j = 0; j < dataGridView.Columns.Count - 1; j++)
+                            {
+                                xlApp.Cells[i + 2, j + 1] = dataGridView.SelectedRows[i].Cells[j].Value.ToString();
+                            }
+                        }
+                        xlApp.Visible = true;
+                        break;
+                    };
+
+                case DialogResult.Cancel:
+                    return;
+            }
+        }
+
+        private Excel.Application GetExcel()
+        {
+            Excel.Application xlApp;
+            Worksheet xlSheet;
+            xlApp = new Excel.Application();
+            Excel.Workbook wBook;
+            wBook = xlApp.Workbooks.Add();
+            xlApp.Columns.ColumnWidth = 15;
+            xlSheet = wBook.Sheets[1];
+            xlSheet.Name = "Продавцы";
+            xlSheet.Cells.HorizontalAlignment = 3;
+            for (int j = 1; j < dataGridView.Columns.Count; j++)
+            {
+                xlApp.Cells[1, j] = dataGridView.Columns[j - 1].HeaderText;
+            }
+            return xlApp;
         }
     }
 }
