@@ -16,7 +16,7 @@ namespace UserInterface
             context = new MyDbContext();
         }
 
-        private void ProductToolStripMenuItem_Click(object sender, EventArgs e)
+        private  void ProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var pg = new ProductGrid();
             pg.Show();
@@ -137,6 +137,12 @@ namespace UserInterface
         private void выходToolStripMenuItem_MouseEnter(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Выйти из приложения";
+        }
+
+        private void моделированиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var mf = new ModelForm();
+            mf.Show();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace CRMBL.Model
         /// <summary>
         /// Максимальная длинна очереди
         /// </summary>
-        public int MaxQueueLenght { get; set; }
+        public int MaxQueueLength { get; set; }
 
         /// <summary>
         /// Счетчик ушедших покупателей
@@ -43,27 +43,32 @@ namespace CRMBL.Model
         /// </summary>
         public bool IsModel { get; set; }
 
+        public event EventHandler<Check> CheckClosed;
+
+        /// <summary>
+        /// Длинна очереди
+        /// </summary>
         public int Count =>QueueCart.Count;
 
         public CashDesk(int number,Seller seller)
         {
             QueueCart = new Queue<Cart>();
             IsModel = true;
-            //TODO Возможна сириализация номера кассы
+            MaxQueueLength = 10;
+
             if(number>0 && seller != null)
             {
                 Number = number;
                 Seller = seller;
                 return;
             }
-
             Number = new Random().Next(0,20);
             Seller = new Seller();
         }
 
         public void Enqueue(Cart cart)
         {
-            if(cart!=null && QueueCart.Count<=MaxQueueLenght)
+            if(cart!=null && QueueCart.Count<=MaxQueueLength)
             {
                 QueueCart.Enqueue(cart);
             }
@@ -128,13 +133,21 @@ namespace CRMBL.Model
                         sum += product.Price;
                     }
                 }
+                check.Price = sum;
 
                 if (!IsModel)
                 {
                     context.SaveChanges();
                 }
+
+                CheckClosed?.Invoke(this, check);
             }
             return sum;
+        }
+
+        public override string ToString()
+        {
+            return $"Касса№{Number}";
         }
     }
 }

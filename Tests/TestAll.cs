@@ -1,6 +1,7 @@
 using CRMBL.Model;
 using FluentAssertions;
 using System.Collections.Generic;
+using System.Threading;
 using Xunit;
 
 namespace Tests
@@ -125,6 +126,14 @@ namespace Tests
             cart1ExpectedResult.Should().Be(cart1ActualResult);
             cart2ExpectedResult.Should().Be(cart2ActualResult);
 
+        }
+
+        [Fact]
+        public void StartTest()
+        {
+            var model = new ShopComputerModel();
+            model.Start();
+            Thread.Sleep(10000);
         }
     }
 }
