@@ -22,6 +22,7 @@ namespace UserInterface.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             var cashBoxes = new List<CashBoxView>();
 
             for (int i = 0; i < model.CashDesks.Count; i++)

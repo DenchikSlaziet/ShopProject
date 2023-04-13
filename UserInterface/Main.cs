@@ -1,5 +1,7 @@
 ﻿using CRMBL.Model;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.Forms;
 using UserInterface.FormsGrid;
@@ -9,11 +11,17 @@ namespace UserInterface
     public partial class Main : Form
     {
         MyDbContext context;
+        Cart cart;
+        Customer customer;
+        CashDesk cashDesk;
 
         public Main()
         {
             InitializeComponent();
             context = new MyDbContext();
+            cart = new Cart(customer);
+            cashDesk = new CashDesk(1, context.Sellers.FirstOrDefault());
+            cashDesk.IsModel = false;
         }
 
         private  void ProductToolStripMenuItem_Click(object sender, EventArgs e)
@@ -143,6 +151,74 @@ namespace UserInterface
         {
             var mf = new ModelForm();
             mf.Show();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            Task.Run(() => listBoxProducts.Invoke((Action)delegate
+            {
+                listBoxProducts.Items.AddRange(context.Products.ToArray());
+            }));
+        }
+
+        private  void UpDateListBox()
+        {
+            listBoxCart.Items.Clear();
+            listBoxCart.Items.AddRange(cart.GetAll().ToArray());
+            labelSum.Text = cart.SumCart.ToString();
+        }
+
+        private void listBoxProducts_DoubleClick(object sender, EventArgs e)
+        {
+            if(listBoxProducts.SelectedItems[0] is Product product)
+            {
+                cart.Add(product);
+                UpDateListBox();
+            }
+            buttonSell.Enabled = cart.SumCart != 0;
+        }
+        private void labelSum_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxCart_DoubleClick(object sender, EventArgs e)
+        {
+        //    if (listBoxProducts.SelectedItems[0] is Product product)
+        //    {
+        //        cart.Delete(product);
+        //        UpDateListBox();
+        //    }
+        //    buttonSell.Enabled = cart.SumCart != 0;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var form = new LoginForm();
+            if(form.ShowDialog()==DialogResult.OK)
+            {
+                customer = form.Customer;
+                cart.Customer=customer; 
+                linkLabel1.Text = $"Здравствуй, {customer.Name}!";
+            }
+        }
+
+        private void buttonSell_Click(object sender, EventArgs e)
+        {
+           if(customer==null)
+           {
+                MessageBox.Show("Авторизуйтесь пожалуйста!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           }
+           else
+           {
+                cashDesk.Enqueue(cart);
+                cashDesk.Dequeue();
+           }
+        }
+
+        private void linkLabel1_MouseEnter(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Авторизация пользователя";
         }
     }
 }

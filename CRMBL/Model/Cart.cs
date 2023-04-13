@@ -22,6 +22,11 @@ namespace CRMBL.Model
         /// </summary>
         public Dictionary<Product, int> Products { get; set; }
 
+        /// <summary>
+        /// Общая стоимость корзины
+        /// </summary>
+        public decimal SumCart => GetAll().Sum(x => x.Price);
+
         public Cart(Customer customer)
         {
             if(customer != null)
@@ -46,6 +51,18 @@ namespace CRMBL.Model
                 Products.Add(product, 1);
             }
         }
+
+        //public void Delete(Product product)
+        //{
+        //    if (Products.TryGetValue(product, out int count) && Products[product]>1)
+        //    {
+        //        Products[product] = --count;
+        //    }
+        //    else
+        //    {
+        //        Products.Remove(product);
+        //    }
+        //}
 
         public IEnumerator GetEnumerator()
         {
