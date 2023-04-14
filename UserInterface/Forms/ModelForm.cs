@@ -46,18 +46,18 @@ namespace UserInterface.Forms
 
         private void ModelForm_Load(object sender, EventArgs e)
         {
-            numericUpDownSpeedCustomer.Value = model.CustomerSpeed;
             numericUpDownSpeedSeller.Value = model.CashDeskSpeed;
+            numericUpDownSpeedCustomer.Value = model.CustomerSpeed;
         }
 
         private void numericUpDownSpeedSeller_ValueChanged(object sender, EventArgs e)
         {
-            model.CashDeskSpeed = (int)numericUpDownSpeedSeller.Value;
+            model.CashDeskSpeed = (int)numericUpDownSpeedCustomer.Value;
         }
 
         private void numericUpDownSpeedCustomer_ValueChanged(object sender, EventArgs e)
         {
-            model.CustomerSpeed = (int)numericUpDownSpeedCustomer.Value;
+            model.CustomerSpeed = (int)numericUpDownSpeedSeller.Value;
         }
     }
 }

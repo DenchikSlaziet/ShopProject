@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelForm));
             this.button1 = new System.Windows.Forms.Button();
-            this.numericUpDownSpeedSeller = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownSpeedCustomer = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSpeedSeller = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedSeller)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedSeller)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -48,34 +49,10 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // numericUpDownSpeedSeller
-            // 
-            this.numericUpDownSpeedSeller.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownSpeedSeller.Location = new System.Drawing.Point(824, 49);
-            this.numericUpDownSpeedSeller.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDownSpeedSeller.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownSpeedSeller.Name = "numericUpDownSpeedSeller";
-            this.numericUpDownSpeedSeller.Size = new System.Drawing.Size(179, 31);
-            this.numericUpDownSpeedSeller.TabIndex = 1;
-            this.numericUpDownSpeedSeller.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownSpeedSeller.ValueChanged += new System.EventHandler(this.numericUpDownSpeedSeller_ValueChanged);
-            // 
             // numericUpDownSpeedCustomer
             // 
             this.numericUpDownSpeedCustomer.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownSpeedCustomer.Location = new System.Drawing.Point(824, 12);
+            this.numericUpDownSpeedCustomer.Location = new System.Drawing.Point(824, 49);
             this.numericUpDownSpeedCustomer.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -88,13 +65,37 @@
             0});
             this.numericUpDownSpeedCustomer.Name = "numericUpDownSpeedCustomer";
             this.numericUpDownSpeedCustomer.Size = new System.Drawing.Size(179, 31);
-            this.numericUpDownSpeedCustomer.TabIndex = 2;
+            this.numericUpDownSpeedCustomer.TabIndex = 1;
             this.numericUpDownSpeedCustomer.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDownSpeedCustomer.ValueChanged += new System.EventHandler(this.numericUpDownSpeedCustomer_ValueChanged);
+            this.numericUpDownSpeedCustomer.ValueChanged += new System.EventHandler(this.numericUpDownSpeedSeller_ValueChanged);
+            // 
+            // numericUpDownSpeedSeller
+            // 
+            this.numericUpDownSpeedSeller.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDownSpeedSeller.Location = new System.Drawing.Point(824, 12);
+            this.numericUpDownSpeedSeller.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownSpeedSeller.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownSpeedSeller.Name = "numericUpDownSpeedSeller";
+            this.numericUpDownSpeedSeller.Size = new System.Drawing.Size(179, 31);
+            this.numericUpDownSpeedSeller.TabIndex = 2;
+            this.numericUpDownSpeedSeller.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownSpeedSeller.ValueChanged += new System.EventHandler(this.numericUpDownSpeedCustomer_ValueChanged);
             // 
             // label1
             // 
@@ -123,15 +124,19 @@
             this.ClientSize = new System.Drawing.Size(1025, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDownSpeedCustomer);
             this.Controls.Add(this.numericUpDownSpeedSeller);
+            this.Controls.Add(this.numericUpDownSpeedCustomer);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1041, 489);
+            this.MinimumSize = new System.Drawing.Size(1041, 489);
             this.Name = "ModelForm";
-            this.Text = "ModelForm";
+            this.Text = "Моделирование";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModelForm_FormClosing);
             this.Load += new System.EventHandler(this.ModelForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedSeller)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeedSeller)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,8 +145,8 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown numericUpDownSpeedSeller;
         private System.Windows.Forms.NumericUpDown numericUpDownSpeedCustomer;
+        private System.Windows.Forms.NumericUpDown numericUpDownSpeedSeller;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

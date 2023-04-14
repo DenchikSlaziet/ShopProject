@@ -28,6 +28,7 @@ namespace UserInterface.Forms
             this.Text = "Изменить покупателя";
             maskedTextBoxNumberCard.Enabled = false;
             label3.Visible = false;
+            Icon = Properties.Resources.Convert;
             Customer=customer;
         }
 

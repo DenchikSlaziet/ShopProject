@@ -29,6 +29,7 @@ namespace UserInterface.Forms
             buttonAdd.Text = "Изменить";
             this.Text = "Изменить Продаца";
             label6.Visible= false;
+            Icon = Properties.Resources.Convert;
             seller = sl;
         }
 

@@ -11,7 +11,7 @@ namespace CRMBL.Model
     /// </summary>
     public class CashDesk
     {
-        private MyDbContext context = new MyDbContext();
+        private MyDbContext context;
 
         /// <summary>
         /// Номер кассы
@@ -50,8 +50,9 @@ namespace CRMBL.Model
         /// </summary>
         public int Count =>QueueCart.Count;
 
-        public CashDesk(int number,Seller seller)
+        public CashDesk(int number,Seller seller,MyDbContext context)
         {
+            this.context = context ?? new MyDbContext();
             QueueCart = new Queue<Cart>();
             IsModel = true;
             MaxQueueLength = 10;
@@ -137,6 +138,7 @@ namespace CRMBL.Model
 
                 if (!IsModel)
                 {
+                    context.Customers.Remove(card.Customer);
                     context.SaveChanges();
                 }
 

@@ -29,7 +29,8 @@ namespace UserInterface.Forms
             buttonAdd.Text = "Изменить";
             textBoxName.Enabled = false;
             label4.Visible= false;
-            product= pr;
+            Icon = Properties.Resources.Convert;
+            product = pr;
         }
 
         private void textBoxCount_KeyPress(object sender, KeyPressEventArgs e)

@@ -18,7 +18,7 @@ namespace CRMBL.Model
         public List<Check> Checks { get; set; } = new List<Check>();
         public List<Sell> Sells { get; set; } = new List<Sell>();
         public Queue<Seller> Sellers { get; set; } = new Queue<Seller>();
-        public int CustomerSpeed { get; set; } = 1000;
+        public int CustomerSpeed { get; set; } = 100;
         public int CashDeskSpeed { get; set; } = 1000;
 
         public ShopComputerModel()
@@ -36,7 +36,7 @@ namespace CRMBL.Model
             {
                 if (Sellers.Count > 0)
                 {
-                    CashDesks.Add(new CashDesk(CashDesks.Count, Sellers.Dequeue()));
+                    CashDesks.Add(new CashDesk(CashDesks.Count, Sellers.Dequeue(),null));
                 }
             }
         }

@@ -217,6 +217,48 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\709793.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1909693.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1995257.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4090491.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dobavit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\259410.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2245094.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1909779.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dobavit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tovar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seller.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Convert.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

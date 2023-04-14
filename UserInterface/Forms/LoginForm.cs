@@ -27,7 +27,7 @@ namespace UserInterface.Forms
             if (context.Customers.Where(x=>x.Name==Name && x.NumberCard==maskedTextBoxNumberCard.Text).Count()>0)
             {
                 MessageBox.Show($"Добро пожаловать {Name}!","Вход",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                Customer=new Customer() 
+                Customer = new Customer() 
                 {
                     Name=GetString(textBoxName.Text),
                     NumberCard=maskedTextBoxNumberCard.Text

@@ -14,13 +14,15 @@ namespace UserInterface
         Cart cart;
         Customer customer;
         CashDesk cashDesk;
+        Random rnd = new Random();
 
         public Main()
         {
             InitializeComponent();
             context = new MyDbContext();
-            cart = new Cart(customer);
-            cashDesk = new CashDesk(1, context.Sellers.FirstOrDefault());
+            cart = new Cart(customer);    
+            var item = rnd.Next(0,context.Sellers.Count());
+            cashDesk = new CashDesk(1, context.Sellers.ToList().ElementAt(item),context);
             cashDesk.IsModel = false;
         }
 
@@ -170,12 +172,15 @@ namespace UserInterface
 
         private void listBoxProducts_DoubleClick(object sender, EventArgs e)
         {
-            if(listBoxProducts.SelectedItems[0] is Product product)
+            if (listBoxProducts.SelectedItem != null)
             {
-                cart.Add(product);
-                UpDateListBox();
+                if (listBoxProducts.SelectedItems[0] is Product product)
+                {
+                    cart.Add(product);
+                    UpDateListBox();
+                }
+                buttonSell.Enabled = cart.SumCart != 0;
             }
-            buttonSell.Enabled = cart.SumCart != 0;
         }
 
         private void listBoxCart_DoubleClick(object sender, EventArgs e)
@@ -208,7 +213,11 @@ namespace UserInterface
            else
            {
                 cashDesk.Enqueue(cart);
-                cashDesk.Dequeue();
+                var price = cashDesk.Dequeue();
+                listBoxCart.Items.Clear();
+                cart = new Cart(customer);
+                labelSum.Text = "0";
+                MessageBox.Show($"Покупка выполнена!\nСумма покупки: {price}\nПокупатель: {customer.Name}","Справка",MessageBoxButtons.OK,MessageBoxIcon.Information);
            }
         }
 
