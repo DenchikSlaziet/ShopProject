@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRMBL.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +17,12 @@ namespace UserInterface.FormsGrid
         private const string PATH = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;";
         private SqlConnection connection = new SqlConnection(PATH);
         private SqlCommand command;
+        private MyDbContext context;
         public CheckGrid()
         {
             InitializeComponent();
             dataGridView.AutoGenerateColumns = false;
+            context = new MyDbContext();
         }
 
         private void CheckGrid_Load(object sender, EventArgs e)
@@ -49,6 +52,13 @@ namespace UserInterface.FormsGrid
             {
                 dataGridView.Rows.Add(item);
             }
+            UpdateStatus();
+        }
+
+        private void UpdateStatus()
+        {
+            toolStripStatusLabelCount.Text = $"Кол-во: {context.Checks.Count()}";
+            toolStripStatusLabelPrice.Text = $"Общая выручка: {context.Checks.Sum(x => x.Price)} руб.";
         }
     }
 }

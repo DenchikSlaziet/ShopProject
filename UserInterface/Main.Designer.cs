@@ -316,7 +316,6 @@
             this.labelSum.Size = new System.Drawing.Size(24, 25);
             this.labelSum.TabIndex = 5;
             this.labelSum.Text = "0";
-            this.labelSum.Click += new System.EventHandler(this.labelSum_Click);
             // 
             // buttonSell
             // 

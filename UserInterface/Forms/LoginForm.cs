@@ -69,5 +69,14 @@ namespace UserInterface.Forms
         {
             buttonOK.Enabled = !string.IsNullOrWhiteSpace(textBoxName.Text) && maskedTextBoxNumberCard.MaskCompleted;
         }
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '-')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

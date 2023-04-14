@@ -177,10 +177,6 @@ namespace UserInterface
             }
             buttonSell.Enabled = cart.SumCart != 0;
         }
-        private void labelSum_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void listBoxCart_DoubleClick(object sender, EventArgs e)
         {
