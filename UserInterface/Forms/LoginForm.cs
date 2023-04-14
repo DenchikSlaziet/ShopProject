@@ -15,10 +15,10 @@ namespace UserInterface.Forms
     {
         MyDbContext context;
         public Customer Customer { get; set; }
-        public LoginForm()
+        public LoginForm(MyDbContext context)
         {
             InitializeComponent();
-            context = new MyDbContext();
+            this.context = context ?? new MyDbContext();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,12 +27,8 @@ namespace UserInterface.Forms
             if (context.Customers.Where(x=>x.Name==Name && x.NumberCard==maskedTextBoxNumberCard.Text).Count()>0)
             {
                 MessageBox.Show($"Добро пожаловать {Name}!","Вход",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                Customer = new Customer() 
-                {
-                    Name=GetString(textBoxName.Text),
-                    NumberCard=maskedTextBoxNumberCard.Text
-                };
-                DialogResult=DialogResult.OK;
+                Customer = context.Customers.First(x => x.NumberCard == maskedTextBoxNumberCard.Text);
+                DialogResult =DialogResult.OK;
             }
             else
             {
@@ -50,7 +46,7 @@ namespace UserInterface.Forms
             }
         }
 
-        private string GetString(string str)
+        public string GetString(string str)
         {
             var full = str.Split('-');
             if (full.Length > 0)

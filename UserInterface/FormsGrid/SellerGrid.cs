@@ -49,6 +49,11 @@ namespace UserInterface.FormsGrid
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            if(context.Sellers.Count() == 1)
+            {
+                MessageBox.Show("Вы не можете удалить единственного работника!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             var data = (Seller)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
             if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} {data.Surname}(-а) ?", "Удаление Записи",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)

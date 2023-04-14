@@ -99,10 +99,10 @@ namespace CRMBL.Model
                     CreatedData = DateTime.Now,
                 };
 
-                if(!IsModel)
+                if (!IsModel)
                 {
                     context.Checks.Add(check);
-                    context.SaveChanges();
+                    context.SaveChanges();                    
                 }
                 else
                 {
@@ -137,8 +137,7 @@ namespace CRMBL.Model
                 check.Price = sum;
 
                 if (!IsModel)
-                {
-                    context.Customers.Remove(card.Customer);
+                {                   
                     context.SaveChanges();
                 }
 

@@ -20,9 +20,23 @@ namespace UserInterface
         {
             InitializeComponent();
             context = new MyDbContext();
-            cart = new Cart(customer);    
+            cart = new Cart(customer);  
+            
+            if(context.Sellers.Count()==0)
+            {
+                context.Sellers.Add(new Seller()
+                {
+                    Name = "Дмитрий",
+                    Surname = "Коротков",
+                    Age = 18,
+                    CompanySeller = "ООО ГАЗПРОМ",
+                    UniqueNumber = "RRRE-324G-FDGD",
+                });
+                context.SaveChanges();
+            }
+
             var item = rnd.Next(0,context.Sellers.Count());
-            cashDesk = new CashDesk(1, context.Sellers.ToList().ElementAt(item),context);
+            cashDesk = new CashDesk(1, context.Sellers.ToList().ElementAt(item), context);
             cashDesk.IsModel = false;
         }
 
@@ -63,24 +77,24 @@ namespace UserInterface
 
         private void ProductAddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new SellerForm();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                context.Sellers.Add(form.seller);
-                context.SaveChanges();
-                MessageBox.Show($"Вы успешно добавили продавца!\nИмя: {form.seller.Name}\nФамилия: {form.seller.Surname}",
-                    "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void SellerAddToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             var form = new ProductForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 context.Products.Add(form.product);
                 context.SaveChanges();
                 MessageBox.Show($"Вы успешно добавили товар!\nНаиминование: {form.product.Name}\nЦена: {form.product.Price}",
+                    "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void SellerAddToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new SellerForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                context.Sellers.Add(form.seller);
+                context.SaveChanges();
+                MessageBox.Show($"Вы успешно добавили продавца!\nИмя: {form.seller.Name}\nФамилия: {form.seller.Surname}",
                     "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -195,7 +209,7 @@ namespace UserInterface
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var form = new LoginForm();
+            var form = new LoginForm(context);
             if(form.ShowDialog()==DialogResult.OK)
             {
                 customer = form.Customer;
@@ -212,18 +226,25 @@ namespace UserInterface
            }
            else
            {
-                cashDesk.Enqueue(cart);
-                var price = cashDesk.Dequeue();
-                listBoxCart.Items.Clear();
-                cart = new Cart(customer);
-                labelSum.Text = "0";
-                MessageBox.Show($"Покупка выполнена!\nСумма покупки: {price}\nПокупатель: {customer.Name}","Справка",MessageBoxButtons.OK,MessageBoxIcon.Information);
+             cashDesk.Enqueue(cart);
+             var price = cashDesk.Dequeue();               
+             listBoxCart.Items.Clear();
+             cart = new Cart(customer);
+             labelSum.Text = "0";
+             MessageBox.Show($"Покупка выполнена!\nСумма покупки: {price}\nПокупатель: {customer.Name}", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             buttonSell.Enabled = false;
            }
         }
 
         private void linkLabel1_MouseEnter(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Авторизация пользователя";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listBoxProducts.Items.Clear();
+            listBoxProducts.Items.AddRange(context.Products.ToArray());
         }
     }
 }
