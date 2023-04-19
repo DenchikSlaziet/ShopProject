@@ -43,6 +43,14 @@ namespace UserInterface.FormsGrid
         {
             ///
             dataGridView.DataSource = context.Sellers.ToList();
+            var list2 = context.Sellers.ToList().Select(x => x.CompanySeller);
+            comboBox2.Items.Clear();
+            comboBox2.Text = "";
+            foreach (var item in list2)
+            {
+                comboBox2.Items.Add(item);
+            }
+
             toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
             toolStripStatusLabelCountAge.Text = $"Моложе 25 лет: {context.Sellers.Where(x => x.Age < 25).Count()}";
         }
@@ -232,6 +240,23 @@ namespace UserInterface.FormsGrid
         private void button2_Click(object sender, EventArgs e)
         {
             UpdateDG();
+            buttonSort.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem != null)
+            {
+                var items = context.Sellers.Where(x => x.CompanySeller == comboBox2.SelectedItem.ToString()).ToList();
+                dataGridView.DataSource = items;
+                toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
+                toolStripStatusLabelCountAge.Text = $"Моложе 25 лет: {items.Where(x => x.Age < 25).Count()}";
+                buttonSort.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Выбирите компанию!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

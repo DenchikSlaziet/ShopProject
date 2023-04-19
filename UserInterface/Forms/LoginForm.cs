@@ -46,7 +46,7 @@ namespace UserInterface.Forms
             }
         }
 
-        public string GetString(string str)
+        private string GetString(string str)
         {
             var full = str.Split('-');
             if (full.Length > 0)
