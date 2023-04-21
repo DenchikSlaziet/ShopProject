@@ -63,7 +63,7 @@ namespace UserInterface.FormsGrid
                 return;
             }
             var data = (Seller)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
-            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} {data.Surname}(-а) ?", "Удаление Записи",
+            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} {data.Surname}(-а) ?\nПосле удаления продавца информация о его продажах удалится!", "Удаление Записи",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 using (var connect = new MyDbContext())

@@ -36,8 +36,12 @@ namespace UserInterface.FormsGrid
 
         private void UpdateStatus()
         {
-            //toolStripStatusLabelCount.Text = $"Кол-во: {context.Checks.Count()}";
-            //toolStripStatusLabelPrice.Text = $"Общая выручка: {context.Checks.Sum(x => x.Price)} руб.";
+            var count = context.Checks.Count();
+            toolStripStatusLabelCount.Text = $"Кол-во: {count}";
+            if (count > 0)
+            {
+                toolStripStatusLabelPrice.Text = $"Общая выручка: {context.Checks.Sum(x => x.Price)} руб.";
+            }
         }
 
         private void buttonSort_Click(object sender, EventArgs e)

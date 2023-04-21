@@ -51,7 +51,7 @@ namespace UserInterface.FormsGrid
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             var data = (Customer)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
-            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} ?", "Удаление Записи",
+            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} ?\nПосле удаления покупателя информация о его покупках удалится!", "Удаление Записи",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 using(var connect = new MyDbContext())
