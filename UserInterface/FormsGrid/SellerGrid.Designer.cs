@@ -35,12 +35,6 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SurnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UniqColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AgeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChecksColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCountAll = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,7 +51,9 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.buttonSort = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.radioButtonDown = new System.Windows.Forms.RadioButton();
@@ -65,8 +61,11 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SurnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniqColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AgeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -77,7 +76,7 @@
             // buttonRefactor
             // 
             this.buttonRefactor.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRefactor.Location = new System.Drawing.Point(259, 390);
+            this.buttonRefactor.Location = new System.Drawing.Point(219, 390);
             this.buttonRefactor.Name = "buttonRefactor";
             this.buttonRefactor.Size = new System.Drawing.Size(131, 35);
             this.buttonRefactor.TabIndex = 15;
@@ -88,7 +87,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDelete.Location = new System.Drawing.Point(514, 390);
+            this.buttonDelete.Location = new System.Drawing.Point(418, 390);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(131, 35);
             this.buttonDelete.TabIndex = 14;
@@ -123,74 +122,21 @@
             this.SurnameColumn,
             this.UniqColumn,
             this.AgeColumn,
-            this.CompanyColumn,
-            this.ChecksColumn});
+            this.CompanyColumn});
             this.dataGridView.Location = new System.Drawing.Point(12, 12);
             this.dataGridView.Name = "dataGridView";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1147, 357);
+            this.dataGridView.Size = new System.Drawing.Size(944, 357);
             this.dataGridView.TabIndex = 12;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.DataPropertyName = "Name";
-            this.NameColumn.HeaderText = "Имя";
-            this.NameColumn.MinimumWidth = 100;
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            this.NameColumn.Width = 200;
-            // 
-            // SurnameColumn
-            // 
-            this.SurnameColumn.DataPropertyName = "Surname";
-            this.SurnameColumn.HeaderText = "Фамилия";
-            this.SurnameColumn.MinimumWidth = 100;
-            this.SurnameColumn.Name = "SurnameColumn";
-            this.SurnameColumn.ReadOnly = true;
-            this.SurnameColumn.Width = 200;
-            // 
-            // UniqColumn
-            // 
-            this.UniqColumn.DataPropertyName = "UniqueNumber";
-            this.UniqColumn.HeaderText = "Уникальный Номер";
-            this.UniqColumn.Name = "UniqColumn";
-            this.UniqColumn.ReadOnly = true;
-            this.UniqColumn.Width = 200;
-            // 
-            // AgeColumn
-            // 
-            this.AgeColumn.DataPropertyName = "Age";
-            this.AgeColumn.HeaderText = "Возраст";
-            this.AgeColumn.MinimumWidth = 50;
-            this.AgeColumn.Name = "AgeColumn";
-            this.AgeColumn.ReadOnly = true;
-            // 
-            // CompanyColumn
-            // 
-            this.CompanyColumn.DataPropertyName = "CompanySeller";
-            this.CompanyColumn.HeaderText = "Компания";
-            this.CompanyColumn.MinimumWidth = 100;
-            this.CompanyColumn.Name = "CompanyColumn";
-            this.CompanyColumn.ReadOnly = true;
-            this.CompanyColumn.Width = 200;
-            // 
-            // ChecksColumn
-            // 
-            this.ChecksColumn.DataPropertyName = "Checks";
-            this.ChecksColumn.HeaderText = "Чеки";
-            this.ChecksColumn.MinimumWidth = 100;
-            this.ChecksColumn.Name = "ChecksColumn";
-            this.ChecksColumn.ReadOnly = true;
-            this.ChecksColumn.Width = 200;
             // 
             // buttonUpdate
             // 
             this.buttonUpdate.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonUpdate.Location = new System.Drawing.Point(772, 390);
+            this.buttonUpdate.Location = new System.Drawing.Point(615, 390);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(131, 35);
             this.buttonUpdate.TabIndex = 16;
@@ -205,7 +151,7 @@
             this.toolStripStatusLabelCountAge});
             this.statusStrip1.Location = new System.Drawing.Point(0, 666);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1666, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1444, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -235,7 +181,7 @@
             this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(1176, 12);
+            this.groupBox1.Location = new System.Drawing.Point(989, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(438, 300);
             this.groupBox1.TabIndex = 18;
@@ -342,12 +288,22 @@
             this.groupBox2.Controls.Add(this.radioButtonDown);
             this.groupBox2.Controls.Add(this.radioButtonUp);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(1176, 331);
+            this.groupBox2.Location = new System.Drawing.Point(989, 331);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(438, 313);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Сортировка";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(138, 261);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(166, 46);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Фильтровать";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -358,6 +314,14 @@
             this.button2.Text = "Сбросить";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(15, 222);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(408, 32);
+            this.comboBox2.TabIndex = 22;
             // 
             // buttonSort
             // 
@@ -409,7 +373,7 @@
             // 
             this.groupBox3.Controls.Add(this.textBoxSearch);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox3.Location = new System.Drawing.Point(721, 438);
+            this.groupBox3.Location = new System.Drawing.Point(518, 442);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(438, 91);
             this.groupBox3.TabIndex = 20;
@@ -428,7 +392,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(1028, 390);
+            this.button1.Location = new System.Drawing.Point(825, 390);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 35);
             this.button1.TabIndex = 21;
@@ -436,29 +400,54 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox2
+            // NameColumn
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(15, 222);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(408, 32);
-            this.comboBox2.TabIndex = 22;
+            this.NameColumn.DataPropertyName = "Name";
+            this.NameColumn.HeaderText = "Имя";
+            this.NameColumn.MinimumWidth = 100;
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            this.NameColumn.Width = 200;
             // 
-            // button3
+            // SurnameColumn
             // 
-            this.button3.Location = new System.Drawing.Point(138, 261);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(166, 46);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Фильтровать";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.SurnameColumn.DataPropertyName = "Surname";
+            this.SurnameColumn.HeaderText = "Фамилия";
+            this.SurnameColumn.MinimumWidth = 100;
+            this.SurnameColumn.Name = "SurnameColumn";
+            this.SurnameColumn.ReadOnly = true;
+            this.SurnameColumn.Width = 200;
+            // 
+            // UniqColumn
+            // 
+            this.UniqColumn.DataPropertyName = "UniqueNumber";
+            this.UniqColumn.HeaderText = "Уникальный Номер";
+            this.UniqColumn.Name = "UniqColumn";
+            this.UniqColumn.ReadOnly = true;
+            this.UniqColumn.Width = 200;
+            // 
+            // AgeColumn
+            // 
+            this.AgeColumn.DataPropertyName = "Age";
+            this.AgeColumn.HeaderText = "Возраст";
+            this.AgeColumn.MinimumWidth = 50;
+            this.AgeColumn.Name = "AgeColumn";
+            this.AgeColumn.ReadOnly = true;
+            // 
+            // CompanyColumn
+            // 
+            this.CompanyColumn.DataPropertyName = "CompanySeller";
+            this.CompanyColumn.HeaderText = "Компания";
+            this.CompanyColumn.MinimumWidth = 100;
+            this.CompanyColumn.Name = "CompanyColumn";
+            this.CompanyColumn.ReadOnly = true;
+            this.CompanyColumn.Width = 200;
             // 
             // SellerGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1666, 688);
+            this.ClientSize = new System.Drawing.Size(1444, 688);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -470,6 +459,8 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1460, 727);
+            this.MinimumSize = new System.Drawing.Size(1460, 727);
             this.Name = "SellerGrid";
             this.Text = "Продавцы";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -493,12 +484,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SurnameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UniqColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AgeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CompanyColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ChecksColumn;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCountAll;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCountAge;
@@ -524,5 +509,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SurnameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniqColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AgeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompanyColumn;
     }
 }
