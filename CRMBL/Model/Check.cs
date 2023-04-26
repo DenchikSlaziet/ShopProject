@@ -40,6 +40,11 @@ namespace CRMBL.Model
         /// </summary>
         public decimal Price { get; set; }
 
+        public string CustomerCard => Customer.NumberCard;
+        public string SellerName => Seller.Name;
+        public string SellerSurname => Seller.Surname;
+        public string SellerNumber => Seller.UniqueNumber; 
+
         public override string ToString()
         {
             return $"№{CheckId} от {CreatedData.ToString("dd.MM.yy hh.mm.ss")}";

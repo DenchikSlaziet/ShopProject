@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -16,9 +17,6 @@ namespace UserInterface.FormsGrid
 {
     public partial class CheckGrid : Form
     {
-        private const string PATH = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ShopDB;Integrated Security=True;";
-        private SqlConnection connection = new SqlConnection(PATH);
-        private SqlCommand command;
         private MyDbContext context;
         public CheckGrid()
         {
@@ -29,8 +27,7 @@ namespace UserInterface.FormsGrid
         }
 
         private void CheckGrid_Load(object sender, EventArgs e)
-        {
-            SortDGV("SELECT Customers.Name, Customers.NumberCard, Sellers.Name , Sellers.Surname , Sellers.UniqueNumber , Checks.CreatedData, Checks.Price FROM Customers,Sellers,Checks WHERE Customers.CustomerId = Checks.CustomerId AND Sellers.SellerId = Checks.SellerId;");
+        {          
             UpdateStatus();
         }
 
@@ -42,6 +39,7 @@ namespace UserInterface.FormsGrid
             {
                 toolStripStatusLabelPrice.Text = $"Общая выручка: {context.Checks.Sum(x => x.Price)} руб.";
             }
+            dataGridView.DataSource = context.Checks.ToList();
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
@@ -50,20 +48,33 @@ namespace UserInterface.FormsGrid
             {
 
                 case "Имя Покупателя":
-                        SortDGV("SELECT Customers.Name, Customers.NumberCard, Sellers.Name , Sellers.Surname , Sellers.UniqueNumber , Checks.CreatedData, Checks.Price FROM Customers,Sellers,Checks WHERE Customers.CustomerId = Checks.CustomerId AND Sellers.SellerId = Checks.SellerId ORDER BY Customers.Name");
-                        break;
+                    if (radioButtonUp.Checked)
+                        dataGridView.DataSource = context.Checks.OrderBy(x => x.Customer).ToList();
+                    else
+                        dataGridView.DataSource = context.Checks.OrderByDescending(x => x.Customer).ToList();
+                    break;
 
                 case "Стоимость":
-                        SortDGV("SELECT Customers.Name, Customers.NumberCard, Sellers.Name , Sellers.Surname , Sellers.UniqueNumber , Checks.CreatedData, Checks.Price FROM Customers,Sellers,Checks WHERE Customers.CustomerId = Checks.CustomerId AND Sellers.SellerId = Checks.SellerId ORDER BY Checks.Price");
+                    if (radioButtonUp.Checked)
+                        dataGridView.DataSource = context.Checks.OrderBy(x => x.Price).ToList();
+                    else
+                        dataGridView.DataSource = context.Checks.OrderByDescending(x => x.Price).ToList();
                     break;
 
                 case "Имя Продавца":
-                        SortDGV("SELECT Customers.Name, Customers.NumberCard, Sellers.Name , Sellers.Surname , Sellers.UniqueNumber , Checks.CreatedData, Checks.Price FROM Customers,Sellers,Checks WHERE Customers.CustomerId = Checks.CustomerId AND Sellers.SellerId = Checks.SellerId ORDER BY Sellers.Name");
+                    if (radioButtonUp.Checked)
+                        dataGridView.DataSource = context.Checks.OrderBy(x => x.Seller).ToList();
+                    else
+                        dataGridView.DataSource = context.Checks.OrderByDescending(x => x.Seller).ToList();
                     break;
 
                 case "Дата Покупки":
-                        SortDGV("SELECT Customers.Name, Customers.NumberCard, Sellers.Name , Sellers.Surname , Sellers.UniqueNumber , Checks.CreatedData, Checks.Price FROM Customers,Sellers,Checks WHERE Customers.CustomerId = Checks.CustomerId AND Sellers.SellerId = Checks.SellerId ORDER BY Checks.CreatedData");
+                    if (radioButtonUp.Checked)
+                        dataGridView.DataSource = context.Checks.OrderBy(x => x.CreatedData).ToList();
+                    else
+                        dataGridView.DataSource = context.Checks.OrderByDescending(x => x.CreatedData).ToList();
                     break;
+
                 default:
                     MessageBox.Show("Такого столбца нет!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -72,7 +83,7 @@ namespace UserInterface.FormsGrid
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView.RowCount-1; i++)
+            for (int i = 0; i < dataGridView.RowCount; i++)
             {
                 for (int j = 0; j < dataGridView.ColumnCount; j++)
                 {
@@ -84,7 +95,7 @@ namespace UserInterface.FormsGrid
             if (!string.IsNullOrWhiteSpace(textBoxSearch.Text))
             {
                 dataGridView.ClearSelection();
-                for (int i = 0; i < dataGridView.RowCount-1; i++)
+                for (int i = 0; i < dataGridView.RowCount; i++)
                 {
                     for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
@@ -97,53 +108,7 @@ namespace UserInterface.FormsGrid
                 }
             }
         }
-
-        private void SortDGV(string query)
-        {    
-            dataGridView.Rows.Clear();
-            connection.Open();
-            if (query.Contains("ORDER BY"))
-            {
-                if (radioButtonUp.Checked)
-                {
-                    query += " ASC;";
-                }
-                else
-                {
-                    query += " DESC;";
-                }
-            }
-
-            command = new SqlCommand(query, connection);
-            var reader = command.ExecuteReader();
-            var list = new List<string[]>();
-
-            while (reader.Read())
-            {
-                list.Add(new string[7]);
-
-                list[list.Count - 1][0] = reader[0].ToString();
-                list[list.Count - 1][1] = reader[1].ToString();
-                list[list.Count - 1][2] = reader[2].ToString();
-                list[list.Count - 1][3] = reader[3].ToString();
-                list[list.Count - 1][4] = reader[4].ToString();
-                list[list.Count - 1][5] = reader[5].ToString();
-                list[list.Count - 1][6] = reader[6].ToString();
-            }
-            reader.Close();
-            connection.Close();
-
-            foreach (var item in list)
-            {
-                dataGridView.Rows.Add(item);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SortDGV("SELECT Customers.Name, Customers.NumberCard, Sellers.Name , Sellers.Surname , Sellers.UniqueNumber , Checks.CreatedData, Checks.Price FROM Customers,Sellers,Checks WHERE Customers.CustomerId = Checks.CustomerId AND Sellers.SellerId = Checks.SellerId;");
-        }
-
+    
         private void button2_Click(object sender, EventArgs e)
         {
             switch (MessageBox.Show("Экспортировать все?", "Справка", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
@@ -200,7 +165,8 @@ namespace UserInterface.FormsGrid
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            SortDGV("SELECT Customers.Name, Customers.NumberCard, Sellers.Name , Sellers.Surname , Sellers.UniqueNumber , Checks.CreatedData, Checks.Price FROM Customers,Sellers,Checks WHERE Customers.CustomerId = Checks.CustomerId AND Sellers.SellerId = Checks.SellerId;");
+            UpdateStatus();
         }
+
     }
 }

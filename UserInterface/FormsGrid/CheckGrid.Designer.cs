@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckGrid));
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelPrice = new System.Windows.Forms.ToolStripStatusLabel();
             this.NameCustomerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumberCurdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameSellerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,14 +39,17 @@
             this.UniqNumberSellerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelPrice = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonSort = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.radioButtonDown = new System.Windows.Forms.RadioButton();
             this.radioButtonUp = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -60,14 +60,14 @@
             // 
             // dataGridView
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameCustomerColumn,
@@ -79,12 +79,68 @@
             this.PriceColumn});
             this.dataGridView.Location = new System.Drawing.Point(12, 12);
             this.dataGridView.Name = "dataGridView";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1443, 306);
             this.dataGridView.TabIndex = 4;
+            // 
+            // NameCustomerColumn
+            // 
+            this.NameCustomerColumn.DataPropertyName = "Customer";
+            this.NameCustomerColumn.HeaderText = "Имя покупателя";
+            this.NameCustomerColumn.Name = "NameCustomerColumn";
+            this.NameCustomerColumn.ReadOnly = true;
+            this.NameCustomerColumn.Width = 200;
+            // 
+            // NumberCurdColumn
+            // 
+            this.NumberCurdColumn.DataPropertyName = "CustomerCard";
+            this.NumberCurdColumn.HeaderText = "Номер карты";
+            this.NumberCurdColumn.Name = "NumberCurdColumn";
+            this.NumberCurdColumn.ReadOnly = true;
+            this.NumberCurdColumn.Width = 200;
+            // 
+            // NameSellerColumn
+            // 
+            this.NameSellerColumn.DataPropertyName = "SellerName";
+            this.NameSellerColumn.HeaderText = "Имя продавца";
+            this.NameSellerColumn.Name = "NameSellerColumn";
+            this.NameSellerColumn.ReadOnly = true;
+            this.NameSellerColumn.Width = 200;
+            // 
+            // SurnameSellerColumn
+            // 
+            this.SurnameSellerColumn.DataPropertyName = "SellerSurname";
+            this.SurnameSellerColumn.HeaderText = "Фамилия продавца";
+            this.SurnameSellerColumn.Name = "SurnameSellerColumn";
+            this.SurnameSellerColumn.ReadOnly = true;
+            this.SurnameSellerColumn.Width = 200;
+            // 
+            // UniqNumberSellerColumn
+            // 
+            this.UniqNumberSellerColumn.DataPropertyName = "SellerNumber";
+            this.UniqNumberSellerColumn.HeaderText = "Ун. номер продавца";
+            this.UniqNumberSellerColumn.Name = "UniqNumberSellerColumn";
+            this.UniqNumberSellerColumn.ReadOnly = true;
+            this.UniqNumberSellerColumn.Width = 200;
+            // 
+            // DateColumn
+            // 
+            this.DateColumn.DataPropertyName = "CreatedData";
+            this.DateColumn.HeaderText = "Дата покупки";
+            this.DateColumn.Name = "DateColumn";
+            this.DateColumn.ReadOnly = true;
+            this.DateColumn.Width = 200;
+            // 
+            // PriceColumn
+            // 
+            this.PriceColumn.DataPropertyName = "Price";
+            this.PriceColumn.HeaderText = "Стоимость покупки (руб.)";
+            this.PriceColumn.Name = "PriceColumn";
+            this.PriceColumn.ReadOnly = true;
+            this.PriceColumn.Width = 200;
             // 
             // statusStrip1
             // 
@@ -110,56 +166,6 @@
             this.toolStripStatusLabelPrice.Size = new System.Drawing.Size(99, 17);
             this.toolStripStatusLabelPrice.Text = "Общая выручка:";
             // 
-            // NameCustomerColumn
-            // 
-            this.NameCustomerColumn.HeaderText = "Имя покупателя";
-            this.NameCustomerColumn.Name = "NameCustomerColumn";
-            this.NameCustomerColumn.ReadOnly = true;
-            this.NameCustomerColumn.Width = 200;
-            // 
-            // NumberCurdColumn
-            // 
-            this.NumberCurdColumn.HeaderText = "Номер карты";
-            this.NumberCurdColumn.Name = "NumberCurdColumn";
-            this.NumberCurdColumn.ReadOnly = true;
-            this.NumberCurdColumn.Width = 200;
-            // 
-            // NameSellerColumn
-            // 
-            this.NameSellerColumn.HeaderText = "Имя продавца";
-            this.NameSellerColumn.Name = "NameSellerColumn";
-            this.NameSellerColumn.ReadOnly = true;
-            this.NameSellerColumn.Width = 200;
-            // 
-            // SurnameSellerColumn
-            // 
-            this.SurnameSellerColumn.HeaderText = "Фамилия продавца";
-            this.SurnameSellerColumn.Name = "SurnameSellerColumn";
-            this.SurnameSellerColumn.ReadOnly = true;
-            this.SurnameSellerColumn.Width = 200;
-            // 
-            // UniqNumberSellerColumn
-            // 
-            this.UniqNumberSellerColumn.HeaderText = "Ун. номер продавца";
-            this.UniqNumberSellerColumn.Name = "UniqNumberSellerColumn";
-            this.UniqNumberSellerColumn.ReadOnly = true;
-            this.UniqNumberSellerColumn.Width = 200;
-            // 
-            // DateColumn
-            // 
-            this.DateColumn.HeaderText = "Дата покупки";
-            this.DateColumn.Name = "DateColumn";
-            this.DateColumn.ReadOnly = true;
-            this.DateColumn.Width = 200;
-            // 
-            // PriceColumn
-            // 
-            this.PriceColumn.DataPropertyName = "Price";
-            this.PriceColumn.HeaderText = "Стоимость покупки (руб.)";
-            this.PriceColumn.Name = "PriceColumn";
-            this.PriceColumn.ReadOnly = true;
-            this.PriceColumn.Width = 200;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button1);
@@ -174,6 +180,16 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Сортировка";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(264, 155);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(155, 43);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Сбросить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSort
             // 
@@ -240,16 +256,6 @@
             this.textBoxSearch.TabIndex = 4;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(264, 155);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 43);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Сбросить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -304,13 +310,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameCustomerColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumberCurdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameSellerColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SurnameSellerColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UniqNumberSellerColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonSort;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -321,5 +320,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameCustomerColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumberCurdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameSellerColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SurnameSellerColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniqNumberSellerColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
     }
 }
