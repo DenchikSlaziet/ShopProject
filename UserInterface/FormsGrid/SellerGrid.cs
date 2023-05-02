@@ -41,15 +41,12 @@ namespace UserInterface.FormsGrid
         }
         private void UpdateDG()
         {
-            ///
             dataGridView.DataSource = context.Sellers.ToList();
-            var list2 = context.Sellers.ToList().Select(x => x.CompanySeller);
+            var items = context.Sellers.Select(x => x.CompanySeller).ToArray();
+
             comboBox2.Items.Clear();
             comboBox2.Text = "";
-            foreach (var item in list2)
-            {
-                comboBox2.Items.Add(item);
-            }
+            comboBox2.Items.AddRange(items);
 
             toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
             toolStripStatusLabelCountAge.Text = $"Моложе 25 лет: {context.Sellers.Where(x => x.Age < 25).Count()}";

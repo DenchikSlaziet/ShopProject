@@ -35,6 +35,11 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SurnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UniqColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AgeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCountAll = new System.Windows.Forms.ToolStripStatusLabel();
@@ -61,11 +66,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SurnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UniqColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AgeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompanyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -132,6 +132,49 @@
             this.dataGridView.Size = new System.Drawing.Size(944, 357);
             this.dataGridView.TabIndex = 12;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.DataPropertyName = "Name";
+            this.NameColumn.HeaderText = "Имя";
+            this.NameColumn.MinimumWidth = 100;
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            this.NameColumn.Width = 200;
+            // 
+            // SurnameColumn
+            // 
+            this.SurnameColumn.DataPropertyName = "Surname";
+            this.SurnameColumn.HeaderText = "Фамилия";
+            this.SurnameColumn.MinimumWidth = 100;
+            this.SurnameColumn.Name = "SurnameColumn";
+            this.SurnameColumn.ReadOnly = true;
+            this.SurnameColumn.Width = 200;
+            // 
+            // UniqColumn
+            // 
+            this.UniqColumn.DataPropertyName = "UniqueNumber";
+            this.UniqColumn.HeaderText = "Уникальный Номер";
+            this.UniqColumn.Name = "UniqColumn";
+            this.UniqColumn.ReadOnly = true;
+            this.UniqColumn.Width = 200;
+            // 
+            // AgeColumn
+            // 
+            this.AgeColumn.DataPropertyName = "Age";
+            this.AgeColumn.HeaderText = "Возраст";
+            this.AgeColumn.MinimumWidth = 50;
+            this.AgeColumn.Name = "AgeColumn";
+            this.AgeColumn.ReadOnly = true;
+            // 
+            // CompanyColumn
+            // 
+            this.CompanyColumn.DataPropertyName = "CompanySeller";
+            this.CompanyColumn.HeaderText = "Компания";
+            this.CompanyColumn.MinimumWidth = 100;
+            this.CompanyColumn.Name = "CompanyColumn";
+            this.CompanyColumn.ReadOnly = true;
+            this.CompanyColumn.Width = 200;
             // 
             // buttonUpdate
             // 
@@ -399,49 +442,6 @@
             this.button1.Text = "Экcпорт";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.DataPropertyName = "Name";
-            this.NameColumn.HeaderText = "Имя";
-            this.NameColumn.MinimumWidth = 100;
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            this.NameColumn.Width = 200;
-            // 
-            // SurnameColumn
-            // 
-            this.SurnameColumn.DataPropertyName = "Surname";
-            this.SurnameColumn.HeaderText = "Фамилия";
-            this.SurnameColumn.MinimumWidth = 100;
-            this.SurnameColumn.Name = "SurnameColumn";
-            this.SurnameColumn.ReadOnly = true;
-            this.SurnameColumn.Width = 200;
-            // 
-            // UniqColumn
-            // 
-            this.UniqColumn.DataPropertyName = "UniqueNumber";
-            this.UniqColumn.HeaderText = "Уникальный Номер";
-            this.UniqColumn.Name = "UniqColumn";
-            this.UniqColumn.ReadOnly = true;
-            this.UniqColumn.Width = 200;
-            // 
-            // AgeColumn
-            // 
-            this.AgeColumn.DataPropertyName = "Age";
-            this.AgeColumn.HeaderText = "Возраст";
-            this.AgeColumn.MinimumWidth = 50;
-            this.AgeColumn.Name = "AgeColumn";
-            this.AgeColumn.ReadOnly = true;
-            // 
-            // CompanyColumn
-            // 
-            this.CompanyColumn.DataPropertyName = "CompanySeller";
-            this.CompanyColumn.HeaderText = "Компания";
-            this.CompanyColumn.MinimumWidth = 100;
-            this.CompanyColumn.Name = "CompanyColumn";
-            this.CompanyColumn.ReadOnly = true;
-            this.CompanyColumn.Width = 200;
             // 
             // SellerGrid
             // 
