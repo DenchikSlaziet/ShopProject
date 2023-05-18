@@ -42,7 +42,7 @@ namespace UserInterface.FormsGrid
         private void UpdateDG()
         {
             dataGridView.DataSource = context.Sellers.ToList();
-            var items = context.Sellers.Select(x => x.CompanySeller).ToArray();
+            var items = context.Sellers.Select(x => x.CompanySeller).Distinct().ToArray();
 
             comboBox2.Items.Clear();
             comboBox2.Text = "";
@@ -167,7 +167,7 @@ namespace UserInterface.FormsGrid
                 dataGridView.ClearSelection();
                 for (int i = 0; i < dataGridView.RowCount; i++)
                 {
-                    for (int j = 0; j < dataGridView.ColumnCount - 1; j++)
+                    for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                         if (dataGridView[j, i].Value.ToString().ToLower().Contains(textBoxSearch.Text.ToLower()))
                         {

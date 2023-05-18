@@ -143,7 +143,7 @@ namespace UserInterface.FormsGrid
                 dataGridView.ClearSelection();
                 for (int i = 0; i < dataGridView.RowCount; i++)
                 {
-                    for (int j = 0; j < dataGridView.ColumnCount - 1; j++)
+                    for (int j = 0; j < dataGridView.ColumnCount; j++)
                     {
                         if (dataGridView[j, i].Value.ToString().ToLower().Contains(textBoxSearch.Text.ToLower()))
                         {

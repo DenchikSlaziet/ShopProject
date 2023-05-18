@@ -295,7 +295,6 @@
             this.listBoxProducts.Name = "listBoxProducts";
             this.listBoxProducts.Size = new System.Drawing.Size(334, 488);
             this.listBoxProducts.TabIndex = 2;
-            this.listBoxProducts.DoubleClick += new System.EventHandler(this.listBoxProducts_DoubleClick);
             // 
             // listBoxCart
             // 

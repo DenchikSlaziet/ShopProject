@@ -168,7 +168,7 @@ namespace UserInterface.FormsGrid
                         var xlApp = GetExcel();
                         for (int i = 0; i < dataGridView.SelectedRows.Count; i++)
                         {
-                            for (int j = 0; j < dataGridView.Columns.Count - 1; j++)
+                            for (int j = 0; j < dataGridView.Columns.Count; j++)
                             {
                                 xlApp.Cells[i + 2, j + 1] = dataGridView.SelectedRows[i].Cells[j].Value.ToString();
                             }

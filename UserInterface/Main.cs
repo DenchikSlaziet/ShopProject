@@ -188,24 +188,19 @@ namespace UserInterface
         {
             if (listBoxProducts.SelectedItem != null)
             {
-                if (listBoxProducts.SelectedItems[0] is Product product)
+                if (listBoxProducts.SelectedItems[0] is Product product && product.Count>0)
                 {
                     cart.Add(product);
                     UpDateListBox();
+                }
+                else
+                {
+                    MessageBox.Show("Извините товар закончился!");
                 }
                 buttonSell.Enabled = cart.SumCart != 0;
             }
         }
 
-        private void listBoxCart_DoubleClick(object sender, EventArgs e)
-        {
-        //    if (listBoxProducts.SelectedItems[0] is Product product)
-        //    {
-        //        cart.Delete(product);
-        //        UpDateListBox();
-        //    }
-        //    buttonSell.Enabled = cart.SumCart != 0;
-        }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -233,6 +228,8 @@ namespace UserInterface
              labelSum.Text = "0";
              MessageBox.Show($"Покупка выполнена!\nСумма покупки: {price}\nПокупатель: {customer.Name}", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
              buttonSell.Enabled = false;
+             DeleteProduct();
+             button1_Click(null,null);
            }
         }
 
@@ -245,6 +242,13 @@ namespace UserInterface
         {
             listBoxProducts.Items.Clear();
             listBoxProducts.Items.AddRange(context.Products.ToArray());
+        }
+
+        private void DeleteProduct()
+        {
+            var products = context.Products.ToList();
+            context.Products.RemoveRange(products.Where(x => x.Count == 0));
+            context.SaveChanges();
         }
     }
 }
