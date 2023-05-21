@@ -32,6 +32,12 @@ namespace UserInterface.Forms
             Customer=customer;
         }
 
+        public CustomerForm(string name, string numberCard):this()
+        {
+            textBoxName.Text = name;
+            maskedTextBoxNumberCard.Text = numberCard;
+        }
+
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             buttonAdd.Enabled = !string.IsNullOrWhiteSpace(textBoxName.Text) && maskedTextBoxNumberCard.MaskCompleted;

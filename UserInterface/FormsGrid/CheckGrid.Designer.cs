@@ -290,6 +290,8 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dataGridView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1482, 604);
+            this.MinimumSize = new System.Drawing.Size(1482, 604);
             this.Name = "CheckGrid";
             this.Text = "Чеки";
             this.Load += new System.EventHandler(this.CheckGrid_Load);

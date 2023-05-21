@@ -210,6 +210,7 @@ namespace UserInterface
                 customer = form.Customer;
                 cart.Customer=customer; 
                 linkLabel1.Text = $"Здравствуй, {customer.Name}!";
+                сущностиToolStripMenuItem1.Visible = true;
             }
         }
 

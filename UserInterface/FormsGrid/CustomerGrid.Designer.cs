@@ -36,6 +36,8 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberCardColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCountAll = new System.Windows.Forms.ToolStripStatusLabel();
@@ -53,9 +55,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberCardColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -127,6 +126,22 @@
             this.dataGridView.Size = new System.Drawing.Size(445, 382);
             this.dataGridView.TabIndex = 8;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.DataPropertyName = "Name";
+            this.ColumnName.HeaderText = "Имя";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            this.ColumnName.Width = 200;
+            // 
+            // NumberCardColumn
+            // 
+            this.NumberCardColumn.DataPropertyName = "NumberCard";
+            this.NumberCardColumn.HeaderText = "Номер Карты";
+            this.NumberCardColumn.Name = "NumberCardColumn";
+            this.NumberCardColumn.ReadOnly = true;
+            this.NumberCardColumn.Width = 200;
             // 
             // buttonUpdate
             // 
@@ -305,38 +320,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(164, 470);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 35);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Импорт";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.DataPropertyName = "Name";
-            this.ColumnName.HeaderText = "Имя";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            this.ColumnName.Width = 200;
-            // 
-            // NumberCardColumn
-            // 
-            this.NumberCardColumn.DataPropertyName = "NumberCard";
-            this.NumberCardColumn.HeaderText = "Номер Карты";
-            this.NumberCardColumn.Name = "NumberCardColumn";
-            this.NumberCardColumn.ReadOnly = true;
-            this.NumberCardColumn.Width = 200;
-            // 
             // CustomerGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 530);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -388,7 +376,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberCardColumn;

@@ -34,7 +34,7 @@ namespace UserInterface.Forms
             {
                 if(MessageBox.Show($"Логин или пароль неверны!\nЖелаете ли вы добавить себя в базу?", "Вход",MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
                 {
-                    var form = new CustomerForm();
+                    var form = new CustomerForm(textBoxName.Text,maskedTextBoxNumberCard.Text);
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         Customer = form.Customer;
