@@ -118,7 +118,8 @@ namespace UserInterface.FormsGrid
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //button1.Enabled = !string.IsNullOrWhiteSpace(textBox1.Text);
+            var IsSearch = false;
+
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
                 for (int j = 0; j < dataGridView.ColumnCount; j++)
@@ -137,10 +138,17 @@ namespace UserInterface.FormsGrid
                     {
                         if (dataGridView[j, i].Value.ToString().ToLower().Contains(textBox1.Text.ToLower()))
                         {
+                            IsSearch = true;
                             dataGridView[j, i].Style.BackColor = Color.Black;
                             dataGridView[j, i].Style.ForeColor = Color.White;
                         }
                     }
+                }
+                if (!IsSearch)
+                {
+                    MessageBox.Show("Ничего не найдено!", "Справка", MessageBoxButtons.OK);
+                    textBox1.Clear();
+                    textBox1.Focus();
                 }
             }
         }
