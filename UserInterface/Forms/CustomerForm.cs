@@ -43,6 +43,7 @@ namespace UserInterface.Forms
             buttonAdd.Enabled = !string.IsNullOrWhiteSpace(textBoxName.Text) && maskedTextBoxNumberCard.MaskCompleted;
         }
 
+        // Кнопка "Добавить"
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             using (var context = new MyDbContext())
@@ -65,17 +66,19 @@ namespace UserInterface.Forms
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        // Метод дающий корректное имя
         private string GetString(string str)
         {
             var full = str.Split('-');
             if (full.Length > 0)
             {
-                var name = "";
+                var name = new StringBuilder();
                 foreach (var item in full)
                 {
-                    name += item.Substring(0, 1).ToUpper() + item.Substring(1).ToLower() + "-";
+                    name.Append(item.Substring(0, 1).ToUpper() + item.Substring(1).ToLower() + "-");
                 }
-                return name.Remove(name.Length-1,1);
+                return name.Remove(name.Length-1,1).ToString();
             }
             return str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
         }

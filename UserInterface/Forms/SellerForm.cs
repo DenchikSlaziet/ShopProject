@@ -77,12 +77,12 @@ namespace UserInterface.Forms
             var full = str.Split('-');
             if (full.Length > 0)
             {
-                var name = "";
+                var name = new StringBuilder();
                 foreach (var item in full)
                 {
-                    name += item.Substring(0, 1).ToUpper() + item.Substring(1).ToLower() + "-";
+                    name.Append(item.Substring(0, 1).ToUpper() + item.Substring(1).ToLower() + "-");
                 }
-                return name.Remove(name.Length - 1, 1);
+                return name.Remove(name.Length - 1, 1).ToString();
             }
             return str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1).ToLower();
         }

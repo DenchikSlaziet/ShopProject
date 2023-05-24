@@ -71,7 +71,8 @@ namespace UserInterface
             {
                 context.Customers.Add(form.Customer);
                 context.SaveChanges();
-                MessageBox.Show($"Вы успешно добавили покупателя!\nИмя: {form.Customer.Name}", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Вы успешно добавили покупателя!\nИмя: {form.Customer.Name}", "Справка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -139,17 +140,20 @@ namespace UserInterface
             toolStripStatusLabel1.Text = "Просмотр информации о приложении";
         }
 
+        // Открыть форму о программе
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new InformationForm();
             form.ShowDialog();
         }
 
+        //Открыть справку
         private void просмотрСправкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "Справка.docx");
         }
 
+        //Выйти из приложения
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
            if(MessageBox.Show("Вы точно хотите выйти?","Вопрос",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
@@ -163,6 +167,7 @@ namespace UserInterface
             toolStripStatusLabel1.Text = "Выйти из приложения";
         }
 
+        //Открытия окна моделированияВ
         private void моделированиеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var mf = new ModelForm();
@@ -177,13 +182,15 @@ namespace UserInterface
             }));
         }
 
-        private  void UpDateListBox()
+        //Обновдление корзины
+        private void UpDateListBox()
         {
             listBoxCart.Items.Clear();
             listBoxCart.Items.AddRange(cart.GetAll().ToArray());
             labelSum.Text = cart.SumCart.ToString();
         }
 
+        //Добавление в корзину
         private void listBoxProducts_DoubleClick(object sender, EventArgs e)
         {
             if (listBoxProducts.SelectedItem != null)
@@ -227,7 +234,10 @@ namespace UserInterface
              listBoxCart.Items.Clear();
              cart = new Cart(customer);
              labelSum.Text = "0";
-             MessageBox.Show($"Покупка выполнена!\nСумма покупки: {price}\nПокупатель: {customer.Name}", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+             MessageBox.Show($"Покупка выполнена!\nСумма покупки: {price}\nПокупатель: {customer.Name}", "Справка", 
+                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+
              buttonSell.Enabled = false;
              DeleteProduct();
              button1_Click(null,null);

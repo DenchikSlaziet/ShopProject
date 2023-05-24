@@ -21,6 +21,7 @@ namespace UserInterface.Forms
             this.context = context ?? new MyDbContext();
         }
 
+        //Кнопка "Войти"
         private void button1_Click(object sender, EventArgs e)
         {
             var Name = GetString(textBoxName.Text);
@@ -32,7 +33,8 @@ namespace UserInterface.Forms
             }
             else
             {
-                if(MessageBox.Show($"Логин или пароль неверны!\nЖелаете ли вы добавить себя в базу?", "Вход",MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
+                if(MessageBox.Show($"Логин или пароль неверны!\nЖелаете ли вы добавить себя в базу?", "Вход",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
                 {
                     var form = new CustomerForm(textBoxName.Text,maskedTextBoxNumberCard.Text);
                     if (form.ShowDialog() == DialogResult.OK)
@@ -46,6 +48,7 @@ namespace UserInterface.Forms
             }
         }
 
+        // Настройка имени пользователя
         private string GetString(string str)
         {
             var full = str.Split('-');

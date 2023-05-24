@@ -27,9 +27,11 @@ namespace UserInterface.FormsGrid
             UpdateDG();
         }
 
+        // Кнопка "Обновить"
         private void button1_Click(object sender, EventArgs e) => UpdateDG();
 
 
+        // Добавление покупателя
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             var form = new CustomerForm();
@@ -38,20 +40,17 @@ namespace UserInterface.FormsGrid
                 context.Customers.Add(form.Customer);
                 context.SaveChanges();
                 UpdateDG();
-                MessageBox.Show($"Вы успешно добавили покупателя!\nИмя: {form.Customer.Name}", "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Вы успешно добавили покупателя!\nИмя: {form.Customer.Name}", "Справка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void UpdateDG()
-        {
-            dataGridView.DataSource = context.Customers.ToList();
-            toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
-        }
-
+        // Удаление покупателя
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             var data = (Customer)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
-            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} ?\nПосле удаления покупателя информация о его покупках удалится!", "Удаление Записи",
+            if (MessageBox.Show($"Вы действительно хотите удалить {data.Name} ?\nПосле удаления покупателя информация о его покупках удалится!", 
+                "Удаление Записи",
                 MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 using(var connect = new MyDbContext())
@@ -67,6 +66,7 @@ namespace UserInterface.FormsGrid
             }
         }
 
+        // Изменение покупателя
         private void buttonRefactor_Click(object sender, EventArgs e)
         {
             var data = (Customer)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
@@ -81,6 +81,14 @@ namespace UserInterface.FormsGrid
 
         }
 
+        // Обновление таблицы
+        private void UpdateDG()
+        {
+            dataGridView.DataSource = context.Customers.ToList();
+            toolStripStatusLabelCountAll.Text = $"Кол-во элементов: {dataGridView.RowCount}";
+        }
+
+        // Отображение данных по выбору строки
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count > 0)
@@ -90,6 +98,7 @@ namespace UserInterface.FormsGrid
             }
         }
 
+        // Кнопка "Сортировки"
         private void buttonSort_Click(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedItem.ToString())
@@ -116,6 +125,8 @@ namespace UserInterface.FormsGrid
             }
         }
 
+
+        // Поиск в таблице
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             var IsSearch = false;
@@ -153,6 +164,7 @@ namespace UserInterface.FormsGrid
             }
         }
 
+        // Кнопка "Экспорт"
         private void button1_Click_1(object sender, EventArgs e)
         {
             switch (MessageBox.Show("Экспортировать все?", "Справка", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
@@ -190,6 +202,7 @@ namespace UserInterface.FormsGrid
             }           
         }
 
+        //Создание Excel файла
         private Excel.Application GetExcel()
         {
             Excel.Application xlApp;
@@ -201,13 +214,16 @@ namespace UserInterface.FormsGrid
             xlSheet = wBook.Sheets[1];
             xlSheet.Name = "Покупатели";
             xlSheet.Cells.HorizontalAlignment = 3;
+
             for (int j = 1; j < dataGridView.Columns.Count; j++)
             {
                 xlApp.Cells[1, j] = dataGridView.Columns[j - 1].HeaderText;
             }
+
             return xlApp;
         }
 
+        
         private void button3_Click(object sender, EventArgs e)
         {
             UpdateDG();
